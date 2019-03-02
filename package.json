@@ -1,0 +1,37 @@
+{
+  "name": "ju-kwit-yet",
+  "version": "1.0.0",
+  "description": "UNCC Coding Bootcamp Final Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CACOOK88/ju-kwit-yet.git"
+  },
+  "author": "Kari Gehrke, Amanda Filippis, Dan Runion, Chad Cook",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CACOOK88/ju-kwit-yet/issues"
+  },
+  "homepage": "https://github.com/CACOOK88/ju-kwit-yet#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "if-env": "^1.0.4",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "sequelize": "^4.42.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.10"
+  }
+}
