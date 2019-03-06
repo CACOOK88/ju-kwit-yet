@@ -1,0 +1,21 @@
+.navbar {
+  color: #eee;
+  width: 100%;
+  background: #444;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar h1 {
+  margin: 0;
+}
+
+.navbar form {
+  margin-left: auto;
+}
+
+.navbar form label,
+.navbar form button {
+  margin-left: 15px;
+}
