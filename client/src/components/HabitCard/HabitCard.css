@@ -1,0 +1,35 @@
+.habitTitle {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.habitCard,
+.habitCardContainer,
+.historyBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.habitCardContainer {
+  flex-direction: row;
+  margin-top: 15px;
+  width: 85%;
+  border: 2px solid orange;
+  border-radius: 5px;
+}
+
+.habitCardContainer p {
+  margin-left: 20px;
+}
+
+.historyBox {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #777;
+  background: #777;
+  border-radius: 5px;
+  font-size: 24px;
+  margin-left: 3px;
+}
