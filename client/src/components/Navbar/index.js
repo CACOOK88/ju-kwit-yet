@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './navbar.css'
 import navLogo from'../Images/project3_white2.png'
 
-export default function index() {
-  return (
-    <div className="navbar">
-      <img src={navLogo} alt="Logo"></img>
-      <form>
-        <label htmlFor="userName">User Name: </label>
-        <input type="text" placeholder="Enter Username" name="userName" />
+export default class index extends Component {
 
-        <label htmlFor="password">Password:</label>
-        <input type="text" placeholder="Enter Password" name="password" />
 
-        <button>Submit</button>
-      </form>
-    </div>
-  )
+  render() {
+    return (
+      <div className="navbar">
+        <a href="/" ><img src={navLogo} alt="Logo"></img></a>
+        <form action="/profile">
+          <label htmlFor="userName">User Name: </label>
+          <input type="text" placeholder="Enter Username" name="userName" />
+
+          <label htmlFor="password">Password:</label>
+          <input type="text" placeholder="Enter Password" name="password" />
+
+          <button>Submit</button>
+        </form>
+      </div>
+    )
+  }
 }
