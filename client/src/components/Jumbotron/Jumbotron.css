@@ -18,6 +18,12 @@
   background: rgba(0, 0, 0, 0.8);
 }
 
+.jumbotron img {
+  height: auto;
+  width: 70%;
+  z-index: 2;
+}
+
 .jumbotron h1 {
   font-size: 5rem;
   margin: 0;

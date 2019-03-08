@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import Jumbotron from '../components/Jumbotron'
+import Footer from '../components/Footer'
 
 export default class Home extends Component {
   render() {
@@ -8,6 +9,7 @@ export default class Home extends Component {
       <div>
         <Navbar />
         <Jumbotron />
+        <Footer />
       </div>
     )
   }

@@ -7,6 +7,11 @@
   align-items: center;
 }
 
+.navbar img {
+  width: 20%;
+  height: 20%;
+}
+
 .navbar h1 {
   margin: 0;
 }
@@ -19,3 +24,4 @@
 .navbar form button {
   margin-left: 15px;
 }
+
