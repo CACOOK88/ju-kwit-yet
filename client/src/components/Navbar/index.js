@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './navbar.css'
+import './Navbar.css'
 import navLogo from'../Images/project3_white2.png'
 
 export default class index extends Component {
