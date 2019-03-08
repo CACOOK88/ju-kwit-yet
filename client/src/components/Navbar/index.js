@@ -13,7 +13,7 @@ export default class index extends Component {
           <label htmlFor="userName">User Name: </label>
           <input type="text" placeholder="Enter Username" name="userName" />
 
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Password: </label>
           <input type="text" placeholder="Enter Password" name="password" />
 
           <button>Submit</button>
