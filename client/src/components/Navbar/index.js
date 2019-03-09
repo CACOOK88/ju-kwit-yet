@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
 import './Navbar.css'
 import navLogo from'../Images/project3_white2.png'
+import Modal from '../Modal'
 
 export default class index extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showModal: false
+    }
+  }
 
+  handleToggleModal() {
+    this.setState = {
+      showModal: !this.state.showModal
+    }
+  }
 
   render() {
     return (
@@ -18,6 +30,7 @@ export default class index extends Component {
 
           <button>Submit</button>
         </form>
+        <Modal show={this.state.showModal} />
       </div>
     )
   }
