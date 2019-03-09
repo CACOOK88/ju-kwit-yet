@@ -16,6 +16,8 @@ export default class Profile extends Component {
         <Jumbotron /> 
         <AddHabit />
         <h1 className="habitTitle">Your Habits</h1>
+        {/* THIS IS WHERE THE MAP METHOD WILL GO BASED ON
+            DATA COMING FROM THE DB   */}
         <HabitCard />
         <HabitCard />
         <HabitCard />
