@@ -4,7 +4,7 @@ import './Footer.css'
 export default function index() {
     return (
       <div className="footer">
-        <p>Copyright© 2019</p>
+        © Copyright 2019
       </div>
     )
   }

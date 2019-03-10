@@ -6,3 +6,11 @@ h4 {
     color: black;
     font-size: 20px;
 }
+
+button {
+    cursor: pointer;
+}
+
+.error {
+    border: 1px solid red;
+  }

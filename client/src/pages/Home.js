@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import Jumbotron from '../components/Jumbotron'
 import Footer from '../components/Footer'
+import HabitSlide from '../components/HabitSlide'
 
 
 export default class Home extends Component {
@@ -10,6 +11,7 @@ export default class Home extends Component {
       <div>
         <Navbar />
         <Jumbotron />
+        <HabitSlide />
         <Footer />
       </div>
     )

@@ -4,7 +4,7 @@
   background: #444;
   padding: 10px;
   display: flex;
-  align-items: center;
+  align-items: center;  
 }
 
 .navbar a {
@@ -28,5 +28,9 @@
 /* .navbar form label, */
 .navbar form button {
   margin-left: 15px;
+}
+
+label {
+  font-family: 'Roboto', sans-serif;
 }
 
