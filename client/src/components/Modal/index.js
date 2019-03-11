@@ -59,7 +59,6 @@ export default class SignUpModal extends Component {
     event.preventDefault();
     console.log(`submitted`)
     const { firstName, lastName, userName, email, password } = this.state
-    if (this.canBeSubmitted()) {
       axios.post('/api/users/register', {firstName, lastName, userName, email, password})
         .then(res => {
           console.log(res)
@@ -67,7 +66,7 @@ export default class SignUpModal extends Component {
         .catch(err => {
           if (err) throw err
         })
-    }
+    
   }
 
   canBeSubmitted = () => {
