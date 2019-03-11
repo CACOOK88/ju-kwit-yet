@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
+import axios from 'axios'
 import './modal.css'
 
 const validate = (firstName, lastName, userName, password, email) => { 
@@ -34,29 +35,37 @@ export default class SignUpModal extends Component {
     this.myRef = React.createRef();
   }
 
-onOpenModal = () => {
-  this.setState({ open: true });
-};
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
 
-onCloseModal = () => {
-  this.setState({ open: false });
-};
-// do you need an event handler for every input?
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+  // do you need an event handler for every input?
+  onChange = (e) => {
+    const state = this.state
+    state[e.target.name] = e.target.value
+    this.setState(state)
   }
-// changed field here to false-->was originally true, fixed red box issue?
+  // changed field here to false-->was originally true, fixed red box issue?
   handleBlur = (field) => (event) => {
     this.setState({
       touched: { ...this.state.touched, [field]: false },
     });
   }
 
-  handleSubmit(event) {
-    if (!this.canBeSubmitted()) {
+  handleSubmit = (event) => {
     event.preventDefault();
-    return
-    }
+    console.log(`submitted`)
+      const { firstName, lastName, userName, email, password } = this.state
+    axios.post('/api/users/register', {firstName, lastName, userName, email, password})
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        if (err) throw err
+      })
   }
 
   canBeSubmitted = () => {
@@ -90,62 +99,62 @@ onCloseModal = () => {
           center
           container={this.myRef.current}
         >
-        <form onSubmit={this.handleSubmit}>
-          <h4>Sign Up</h4>
-          <label className='modalForm'>
-            First Name: 
-            <input 
-              className={shouldMarkError('firstName') ? 'error' : ''} 
-              type='text' value={this.state.value} 
-              placeholder='First Name'
-              onChange={this.handleChange} 
-              onBlur={this.handleBlur('firstName')}
-              name='firstName' 
-            />
-            Last Name: 
-            <input 
-              className={shouldMarkError('lastName') ? 'error' : ''} 
-              type='text' value={this.state.value}
-              placeholder='Last Name' 
-              onChange={this.handleChange} 
-              onBlur={this.handleBlur('lastName')}
-              name='lastName' 
-            />
-            <br />
-            User Name:
-            <input 
-              className={shouldMarkError('userName') ? 'error' : ''} 
-              type='text' value={this.state.value} 
-              placeholder='User Name'
-              onChange={this.handleChange} 
-              onBlur={this.handleBlur('userName')}
-              name='userName' 
+          <form onSubmit={this.handleSubmit}>
+            <h4>Sign Up</h4>
+            <label className='modalForm'>
+              First Name: 
+              <input 
+                className={shouldMarkError('firstName') ? 'error' : ''} 
+                type='text' value={this.state.value} 
+                placeholder='First Name'
+                onChange={this.onChange} 
+                onBlur={this.handleBlur('firstName')}
+                name='firstName' 
               />
-            Password:
-            <input 
-              className={shouldMarkError('password') ? 'error' : ''} 
-              type='password' value={this.state.value} 
-              placeholder='Password'
-              onChange={this.handleChange} 
-              onBlur={this.handleBlur('password')}
-              name='password' 
-            />
-            <br />
-            Email:
-            <input 
-              className={shouldMarkError('email') ? 'error' : ''} 
-              type='text' value={this.state.value} 
-              placeholder='Email'
-              onChange={this.handleChange} 
-              onBlur={this.handleBlur('email')}
-              name='email' 
-            />
+              Last Name: 
+              <input 
+                className={shouldMarkError('lastName') ? 'error' : ''} 
+                type='text' value={this.state.value}
+                placeholder='Last Name' 
+                onChange={this.onChange} 
+                onBlur={this.handleBlur('lastName')}
+                name='lastName' 
+              />
+              <br />
+              User Name:
+              <input 
+                className={shouldMarkError('userName') ? 'error' : ''} 
+                type='text' value={this.state.value} 
+                placeholder='User Name'
+                onChange={this.onChange} 
+                onBlur={this.handleBlur('userName')}
+                name='userName' 
+                />
+              Password:
+              <input 
+                className={shouldMarkError('password') ? 'error' : ''} 
+                type='password' value={this.state.value} 
+                placeholder='Password'
+                onChange={this.onChange} 
+                onBlur={this.handleBlur('password')}
+                name='password' 
+              />
+              <br />
+              Email:
+              <input 
+                className={shouldMarkError('email') ? 'error' : ''} 
+                type='text' value={this.state.value} 
+                placeholder='Email'
+                onChange={this.onChange} 
+                onBlur={this.handleBlur('email')}
+                name='email' 
+              />
 
-          </label>
-          <br />          
-          <button disabled={isDisabled} type='submit' value='Submit'>Sign Up</button>
-            
-        </form>
+            </label>
+            <br />          
+            <button disabled={!isDisabled} type='submit' value='Submit' onClick={this.onCloseModal} >Sign Up</button>
+              
+          </form>
         </Modal>
       </div>
     );

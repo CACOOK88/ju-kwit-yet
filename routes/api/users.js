@@ -6,11 +6,18 @@ const usersController = require('../../controllers/usersController')
 // MATCHES WITH /api/users/:id
 router.route('/:id')
   .get(usersController.findById)
-  .put(usersController.update)
-  .delete(usersController.remove)
 
-  // MATCHES WITH /api/users
-router.route('/')
+  // MATCHES WITH /api/users/register
+router.route('/register')
   .post(usersController.create)
 
-module.exports = router
+// MATCHES WITH /api/users/login
+router.route('/login')
+  .post(usersController.login)
+
+// MATCHES WITH /api/users/logout
+router.route('/logout')
+  .get(usersController.logout)
+
+
+  module.exports = router
