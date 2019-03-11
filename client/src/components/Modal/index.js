@@ -23,6 +23,7 @@ export default class SignUpModal extends Component {
       userName: '',
       password: '',
       email: '',
+      message: 'Please complete all fields',
      
       touched: {
         firstName: false,
@@ -57,16 +58,23 @@ export default class SignUpModal extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`submitted`)
     const { firstName, lastName, userName, email, password } = this.state
-      axios.post('/api/users/register', {firstName, lastName, userName, email, password})
-        .then(res => {
-          console.log(res)
-        })
-        .catch(err => {
-          if (err) throw err
-        })
-    
+    axios.post('/api/users', {userName})
+      .then((res) => {
+        // if user does not already exist
+        if ( !res.data ) {
+          axios.post('/api/users/register', {firstName, lastName, userName, email, password})
+            .then(res => {
+              console.log(`created new user`)
+              this.onCloseModal()
+            })
+            .catch(err => {
+              if (err) throw err
+            })
+        } else {
+          this.setState({message: 'Username already exists, Please log in or choose new Username'})
+        }
+      })
   }
 
   canBeSubmitted = () => {
@@ -102,6 +110,7 @@ export default class SignUpModal extends Component {
         >
           <form onSubmit={this.handleSubmit}>
             <h4>Sign Up</h4>
+            <p>{this.state.message}</p>
             <label className='modalForm'>
               First Name: 
               <input 
@@ -153,7 +162,7 @@ export default class SignUpModal extends Component {
 
             </label>
             <br />          
-            <button disabled={!isDisabled} type='submit' value='Submit' onClick={this.onCloseModal} >Sign Up</button>
+            <button disabled={!isDisabled} type='submit' value='Submit' >Sign Up</button>
               
           </form>
         </Modal>

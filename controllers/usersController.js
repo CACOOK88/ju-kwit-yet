@@ -3,8 +3,18 @@ const passport = require('passport')
 const db = require('../models')
 
 module.exports = {
-  findById: function(req, res) {
-
+  findByOne: function(req, res) {
+    db.Users.findOne({
+      where: {
+        userName: req.body.userName
+      }
+    })
+      .then((user) => {
+        res.json(user)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   },
   login: function(req, res, next) {
     passport.authenticate('local', {
@@ -17,6 +27,7 @@ module.exports = {
     res.redirect('/')
   },
   create: function(req, res) {
+    console.log(req.body)
     //create user and save encrypted password
     const { firstName, lastName, email, userName, password } = req.body
     let errors = []

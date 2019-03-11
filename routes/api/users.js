@@ -3,9 +3,13 @@ const usersController = require('../../controllers/usersController')
 
 //INSERT ROUTES HERE TO HIT CONTROLLER TO QUERY DATABASE FOR RESPONSE
 
+// MATCHEAS WITH /api/users
+router.route('/')
+  .post(usersController.findByOne)
+
 // MATCHES WITH /api/users/:id
-router.route('/:id')
-  .get(usersController.findById)
+// router.route('/:id')
+//   .get(usersController.findById)
 
   // MATCHES WITH /api/users/register
 router.route('/register')
