@@ -8,7 +8,7 @@ const validate = (firstName, lastName, userName, password, email) => {
     firstName: firstName.length === 0,
     lastName: lastName.length === 0,
     userName: userName.length === 0,
-    password: password.length === 0,
+    password: password.length < 6,
     email: email.length === 0    
   };
 }
@@ -42,7 +42,7 @@ export default class SignUpModal extends Component {
   onCloseModal = () => {
     this.setState({ open: false });
   };
-  // do you need an event handler for every input?
+
   onChange = (e) => {
     const state = this.state
     state[e.target.name] = e.target.value
@@ -51,21 +51,23 @@ export default class SignUpModal extends Component {
   // changed field here to false-->was originally true, fixed red box issue?
   handleBlur = (field) => (event) => {
     this.setState({
-      touched: { ...this.state.touched, [field]: false },
+      touched: { ...this.state.touched, [field]: true },
     });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(`submitted`)
-      const { firstName, lastName, userName, email, password } = this.state
-    axios.post('/api/users/register', {firstName, lastName, userName, email, password})
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        if (err) throw err
-      })
+    const { firstName, lastName, userName, email, password } = this.state
+    if (this.canBeSubmitted()) {
+      axios.post('/api/users/register', {firstName, lastName, userName, email, password})
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          if (err) throw err
+        })
+    }
   }
 
   canBeSubmitted = () => {

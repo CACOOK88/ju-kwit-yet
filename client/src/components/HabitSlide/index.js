@@ -11,7 +11,7 @@ function HabitSlide() {
 				{content.map((item, index) => (
 					<div key={index}>
 						<div className="center">
-							<h1>{item.title}</h1>														
+							<h1>{item.title}</h1>								
 						</div>
 					</div>
 				))}

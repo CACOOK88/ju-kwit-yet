@@ -8,8 +8,8 @@ module.exports = {
   },
   login: function(req, res, next) {
     passport.authenticate('local', {
-      successRedirect: '/users/profile',
-      failureRedirect: '/loginsuccess'
+      successRedirect: '/profile',
+      failureRedirect: '/loginunsuccessful'
     })(req, res, next)
   },
   logout: function(req, res) {
@@ -35,25 +35,22 @@ module.exports = {
       console.log(`inside /api/users/register create function`)
       console.log(req.body)
       res.json(req.body)
-      // bcrypt.genSalt(10, (err, salt) => {
-      //   bcrypt.hash(password, salt, (err, hash) => {
-      //     if (err) throw err
-      //     password = hash
-
-      //     db.Users.create({
-      //       firstName: firstName,
-      //       lastName: lastName,
-      //       email: email,
-      //       userName: userName,
-      //       password: password
-      //     })
-      //       .then(function(newUser) {
-      //         console.log(newUser)
-      //         res.json(newUser)
-      //       })
-      //   })
-      // })
-
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(password, salt, (err, hash) => {
+          if (err) throw err
+          let hashedPassword = hash
+          db.Users.create({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            userName: userName,
+            password: hashedPassword
+          })
+            .then(function(newUser) {
+              console.log(newUser)
+            })
+        })
+      })
     }
   }
 }
