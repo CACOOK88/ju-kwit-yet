@@ -22,7 +22,7 @@ export default class index extends Component {
 
   onSubmit = (e) => {
     e.preventDefault()
-    console.log(`clicked button`)
+    console.log(`clicked login`)
     const { username, password } = this.state
     axios.post('/api/users/login', {username, password})
       .then(result => {
