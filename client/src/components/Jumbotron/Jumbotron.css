@@ -1,6 +1,6 @@
 .jumbotron {
   color: #eee;
-  background: #777;
+  background: rgb(44,62,80);
   background: url('../Images/journal.jpeg');
   background-size: cover;
   height: 600px;
@@ -15,7 +15,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(44, 62, 80, 0.8);
 }
 
 .jumbotron img {
