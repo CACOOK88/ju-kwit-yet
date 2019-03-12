@@ -110,9 +110,9 @@ export default class SignUpModal extends Component {
         >
           <form onSubmit={this.handleSubmit}>
             <h4>Sign Up</h4>
-            <p>{this.state.message}</p>
+            <p className="fieldMessage">{this.state.message}</p>
             <label className='modalForm'>
-              First Name: 
+              <p className="firstName">First Name: </p>
               <input 
                 className={shouldMarkError('firstName') ? 'error' : ''} 
                 type='text' value={this.state.value} 
@@ -121,7 +121,7 @@ export default class SignUpModal extends Component {
                 onBlur={this.handleBlur('firstName')}
                 name='firstName' 
               />
-              Last Name: 
+              <p className="lastName">Last Name: </p>
               <input 
                 className={shouldMarkError('lastName') ? 'error' : ''} 
                 type='text' value={this.state.value}
@@ -131,7 +131,7 @@ export default class SignUpModal extends Component {
                 name='lastName' 
               />
               <br />
-              User Name:
+              <p className="userName">User Name:</p>
               <input 
                 className={shouldMarkError('userName') ? 'error' : ''} 
                 type='text' value={this.state.value} 
@@ -140,7 +140,7 @@ export default class SignUpModal extends Component {
                 onBlur={this.handleBlur('userName')}
                 name='userName' 
                 />
-              Password:
+              <p className="password">Password:</p>
               <input 
                 className={shouldMarkError('password') ? 'error' : ''} 
                 type='password' value={this.state.value} 
@@ -150,9 +150,9 @@ export default class SignUpModal extends Component {
                 name='password' 
               />
               <br />
-              Email:
+              <p className="email">Email:</p>
               <input 
-                className={shouldMarkError('email') ? 'error' : ''} 
+                className={`emailInput ${shouldMarkError('email') ? 'error' : ''}`} 
                 type='text' value={this.state.value} 
                 placeholder='Email'
                 onChange={this.onChange} 
