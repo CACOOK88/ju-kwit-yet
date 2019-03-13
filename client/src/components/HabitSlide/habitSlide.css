@@ -8,6 +8,11 @@
 	transform: translate(-50%, -50%);
 } */
 
+.sliderImageContent {
+  height: 400px;
+  width: auto;
+}
+
 .slider {
 	position: relative;
 	width: 100%;
@@ -49,8 +54,10 @@
 }
 
 .slide {
+  display: flex;
+  justify-content: center;
 	width: 100%;
-	height: 100%;
+  height: 100%;
 	position: absolute;
 	overflow: hidden
 }
