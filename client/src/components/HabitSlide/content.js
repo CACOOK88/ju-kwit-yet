@@ -1,17 +1,27 @@
 export default [
 	{
-		title: 'Habit 1',		
+    title: 'Be Active',	
+    image: '../Images/be-active.jpg',
+    name: 'Weights'
     },
     {
-		title: 'Habit 2',		
+    title: 'Stop Smoking',		
+    image: '../Images/stop-smoking.jpg',
+    name: 'No Smoking'
     },
     {
-		title: 'Habit 3',		
+    title: 'Talk to Someone New',		
+    image: '../Images/talk-new.jpg',
+    name: 'Friends'
     },
     {
-		title: 'Habit 4',		
+    title: 'Drink More Water',	
+    image: '../Images/drink-more-water.jpg',
+    name: 'Water'
     },
     {
-		title: 'Habit 5',		
+    title: 'Eat More Avocado Toast',		
+    image: '../Images/avocado-toast.jpg',
+    name: 'Toast'
     }
 ]
