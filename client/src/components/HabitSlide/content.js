@@ -1,17 +1,27 @@
 export default [
 	{
-		title: 'Habit 1',		
+    title: 'Be Active',	
+    image: '../Images/activity-athlete-barbell-703009.jpg',
+    name: 'Weights'
     },
     {
-		title: 'Habit 2',		
+    title: 'Stop Smoking',		
+    image: '../Images/addiction-ashtray-blur-247040.jpg',
+    name: 'No Smoking'
     },
     {
-		title: 'Habit 3',		
+    title: 'Talk to Someone New',		
+    image: '../Images/backlit-bright-dawn-697243.jpg',
+    name: 'Friends'
     },
     {
-		title: 'Habit 4',		
+    title: 'Drink More Water',	
+    image: '../Images/blur-bottle-boy-1126557.jpg',
+    name: 'Water'
     },
     {
-		title: 'Habit 5',		
+    title: 'Eat More Avocado Toast',		
+    image: '../Images/appetizer-avocado-bread-566566.jpg',
+    name: 'Toast'
     }
 ]
