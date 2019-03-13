@@ -23,14 +23,14 @@ export default class index extends Component {
   onSubmit = (e) => {
     e.preventDefault()
     console.log(`clicked login`)
-    const { username, password } = this.state
-    axios.post('/api/users/login', {username, password})
+    const { userName, password } = this.state
+    axios.post('/api/users/login', {userName, password})
       .then(result => {
-        console.log(result)
+        console.log(result.data)
         console.log(`axios callback`)
       })
       .catch(err => {
-        if (err.response.status === 401) {
+        if (err) {
           console.log(`ERROR`)
           console.log(err)
         }
@@ -52,7 +52,7 @@ export default class index extends Component {
           <input type="text" placeholder="Enter Username" name="userName" value={this.state.userName} onChange={this.onChange} />
 
           <label htmlFor="password">Password: </label>
-          <input type="text" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.onChange} />
+          <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.onChange} />
 
           <button>Login</button>
         </form>

@@ -1,4 +1,5 @@
 // USER DB TABLE
+const bcrypt = require('bcryptjs')
 
 module.exports = function (sequelize, DataTypes) {
   const Users = sequelize.define('Users', {
@@ -23,6 +24,10 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     }
   })
+
+  Users.prototype.validPassword = function(password) {
+    return bcrypt.compare(password, this.password)
+  }
 
   return Users
 }

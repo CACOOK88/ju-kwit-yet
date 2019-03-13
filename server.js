@@ -14,6 +14,8 @@ const PORT = process.env.PORT || 3001
 const db = require('./models')
 
 // DATA PARSING
+app.use(require('morgan')('combined'));
+app.use(require('cookie-parser')());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -21,8 +23,8 @@ app.use(express.json())
 app.use(
   session({
     secret: 'superSecret',
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: false
   })
 )
 
