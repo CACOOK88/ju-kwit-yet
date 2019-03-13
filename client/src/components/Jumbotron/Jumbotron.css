@@ -3,7 +3,8 @@
   background: rgb(44,62,80);
   background: url('../Images/journal.jpeg');
   background-size: cover;
-  height: 600px;
+  height: 50vw;
+  max-height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,6 +22,7 @@
 .jumbotron img {
   height: auto;
   width: 70%;
+  max-width: 750px;
   z-index: 2;
 }
 
