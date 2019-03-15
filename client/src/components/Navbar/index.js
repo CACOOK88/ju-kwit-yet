@@ -30,19 +30,11 @@ export default class index extends Component {
       <div className="navbar">
         <a href="/" ><img src={navLogo} alt="Logo"></img></a>
         <form onSubmit={this.onSubmit}>
-<<<<<<< HEAD
           <label htmlFor="userName">User Name: </label>
           <input type="text" placeholder="Enter Username" name="userName" value={userName} onChange={onChange} />
 
           <label htmlFor="password">Password: </label>
           <input type="password" placeholder="Enter Password" name="password" value={password} onChange={onChange} />
-=======
-          <label htmlFor="userName">USERNAME: </label>
-          <input type="text" placeholder="Enter Username" name="userName" value={this.state.userName} onChange={this.onChange} />
-
-          <label htmlFor="password">PASSWORD: </label>
-          <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.onChange} />
->>>>>>> b918c998b06bbf0c0d92af1c5d6471a27f88b637
 
           <button>LOGIN</button>
         </form>
