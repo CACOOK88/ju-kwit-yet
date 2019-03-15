@@ -34,7 +34,7 @@ module.exports = {
         if (err) throw err
         if (isMatch) {
           console.log(`matched password here`)
-          res.json(user.id)
+          res.json({id: user.id, userName: user.userName})
         }
       })
     })

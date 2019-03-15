@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import './Navbar.css'
 import navLogo from'../Images/project3_white2.png'
 import Modal from '../Modal'
@@ -9,8 +8,6 @@ export default class index extends Component {
     super();
     this.state = {
       showModal: false,
-      userName: '',
-      password: ''
     }
   }
 
@@ -23,36 +20,21 @@ export default class index extends Component {
   onSubmit = (e) => {
     e.preventDefault()
     console.log(`clicked login`)
-    const { userName, password } = this.state
-    axios.post('/api/users/login', {userName, password})
-      .then(result => {
-        console.log(result.data)
-        console.log(`axios callback`)
-      })
-      .catch(err => {
-        if (err) {
-          console.log(`ERROR`)
-          console.log(err)
-        }
-      })
-  }
-
-  onChange = (e) => {
-    const state = this.state
-    state[e.target.name] = e.target.value
-    this.setState(state)
+    const { userName, password } = this.props
+    this.props.onLoginSubmit(userName, password)
   }
 
   render() {
+    const { onChange, userName, password } = this.props
     return (
       <div className="navbar">
         <a href="/" ><img src={navLogo} alt="Logo"></img></a>
         <form onSubmit={this.onSubmit}>
           <label htmlFor="userName">User Name: </label>
-          <input type="text" placeholder="Enter Username" name="userName" value={this.state.userName} onChange={this.onChange} />
+          <input type="text" placeholder="Enter Username" name="userName" value={userName} onChange={onChange} />
 
           <label htmlFor="password">Password: </label>
-          <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.onChange} />
+          <input type="password" placeholder="Enter Password" name="password" value={password} onChange={onChange} />
 
           <button>Login</button>
         </form>
