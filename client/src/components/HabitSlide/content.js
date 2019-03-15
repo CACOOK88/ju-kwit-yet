@@ -8,26 +8,31 @@ export default [
 	{
     title: 'Be Active',	
     image: beActive,
-    name: 'Weights'
+    name: 'Weights',
+    description: 'Track the days you meet your fitness goals.'
     },
     {
     title: 'Stop Smoking',		
     image: stopSmoking,
-    name: 'No Smoking'
+    name: 'No Smoking',
+    description: 'Every day you manage not to smoke, you should celebrate. Mark it.'
     },
     {
     title: 'Talk to Someone New',		
     image: talkNew,
-    name: 'Friends'
+    name: 'Friends',
+    description: 'Overcome anti-socialness. Record every day you push yourself to talk to someone new.'
     },
     {
     title: 'Drink More Water',	
     image: drinkWater,
-    name: 'Water'
+    name: 'Water',
+    description: "Staying hydrated is important. Catalog every day you manage to reach your goal."
     },
     {
     title: 'Eat More Avocado Toast',		
     image: avocadoToast,
-    name: 'Toast'
+    name: 'Toast',
+    description: 'Not only you should should you stay hydreated, eating well is essential too. Push yourself to make that effort.'
     }
 ]

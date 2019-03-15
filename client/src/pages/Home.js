@@ -83,6 +83,7 @@ export default class Home extends Component {
           password={password}
         />
         <Jumbotron />
+        <br></br>
         <HabitSlide />
         <Footer />
       </div>
