@@ -65,8 +65,9 @@ export default class SignUpModal extends Component {
         if ( !res.data ) {
           axios.post('/api/users/register', {firstName, lastName, userName, email, password})
             .then(res => {
-              console.log(`created new user`)
+              const { id, userName } = res.data
               this.onCloseModal()
+              this.props.onRegisterSubmit(id, userName)
             })
             .catch(err => {
               if (err) throw err

@@ -29,18 +29,6 @@ export default class Home extends Component {
 
   getUserHabitData = (userId) => {
     console.log('inside getUserHabitData')
-    axios.get('/api/habitrecords/userid' + userId)
-      .then(res => {
-
-        // /////////////////////////////////////////////////
-        // /////////////////////////////////////////////////
-        // /////////////////////////////////////////////////
-        //    COME BACK HERE TO FINISH RESPONSE UDPATE
-        // /////////////////////////////////////////////////
-        // /////////////////////////////////////////////////
-        // /////////////////////////////////////////////////
-        console.log(res.data)
-      })
   }
 
   onChange = (e) => {
@@ -70,20 +58,41 @@ export default class Home extends Component {
       })
   }
 
+  onRegisterSubmit = (id, userName) => {
+    console.log(`inside onRegisterSubmit`)
+    this.setState({
+      userId: id,
+      userName: userName,
+      loggedIn: true
+    })
+    console.log(this.state)
+  }
 
+  onLogout = () => {
+    console.log(`clicked logout`)
+    this.setState({
+      loggedIn: false,
+      userId: '',
+      userName: '',
+      password: '',
+      habitData: []
+    })
+  }
 
   render() {
-    const { userName, password } = this.state
+    const { loggedIn, userName, password } = this.state
     return (
       <div>
         <Navbar 
           onLoginSubmit={this.onLoginSubmit}
+          onRegisterSubmit={this.onRegisterSubmit}
           onChange={this.onChange}
+          onLogout={this.onLogout}
           userName={userName}
           password={password}
+          loggedIn={loggedIn}
         />
         <Jumbotron />
-        <br></br>
         <HabitSlide />
         <Footer />
       </div>

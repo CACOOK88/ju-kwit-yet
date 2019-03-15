@@ -68,8 +68,6 @@ module.exports = {
       res.json({errors})
     } else {
       console.log(`inside /api/users/register create function`)
-      console.log(req.body)
-      res.json(req.body)
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(password, salt, (err, hash) => {
           if (err) throw err
@@ -82,7 +80,12 @@ module.exports = {
             password: hashedPassword
           })
             .then(function(newUser) {
-              console.log(newUser)
+              const { id, userName } = newUser.dataValues
+              const newUserResponseData = {
+                id,
+                userName
+              }
+              res.json(newUserResponseData)
             })
         })
       })
