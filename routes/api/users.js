@@ -7,9 +7,9 @@ const usersController = require('../../controllers/usersController')
 router.route('/')
   .post(usersController.findByOne)
 
-// MATCHES WITH /api/users/:id
-// router.route('/:id')
-//   .get(usersController.findById)
+// MATCHES WITH /api/users/loginsuccess
+router.route('/loginsuccess')
+  .get(usersController.logInSuccess)
 
   // MATCHES WITH /api/users/register
 router.route('/register')
@@ -17,7 +17,7 @@ router.route('/register')
 
 // MATCHES WITH /api/users/login
 router.route('/login')
-  .post(usersController.login)
+  .post(usersController.tempLogin)
 
 // MATCHES WITH /api/users/logout
 router.route('/logout')

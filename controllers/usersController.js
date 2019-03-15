@@ -16,16 +16,40 @@ module.exports = {
         console.log(err)
       })
   },
-  login: function(req, res, next) {
-    passport.authenticate('local', {
-      successRedirect: '/profile',
-      failureRedirect: '/loginunsuccessful'
-    })(req, res, next)
+
+  login: passport.authenticate('local', {session: false},
+     function(req, res) {
+      console.log(res)
+    })
+  ,
+  tempLogin: function(req, res) {
+    const { userName, password } = req.body
+    db.Users.findOne({
+      where: { userName: userName }
+    }).then(user => {
+      if (!user) {
+        console.log(`no user found`)
+      }
+      bcrypt.compare(password, user.password, (err, isMatch) => {
+        if (err) throw err
+        if (isMatch) {
+          console.log(`matched password here`)
+          res.json({id: user.id, userName: user.userName})
+        }
+      })
+    })
   },
+
+  logInSuccess: function(req, res) {
+    console.log(`hit logged in function`)
+    res.send(`hello world `)
+  },
+
   logout: function(req, res) {
     req.logout()
     res.redirect('/')
   },
+
   create: function(req, res) {
     console.log(req.body)
     //create user and save encrypted password
