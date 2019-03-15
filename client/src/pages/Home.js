@@ -11,6 +11,7 @@ export default class Home extends Component {
       <div>
         <Navbar />
         <Jumbotron />
+        <br></br>
         <HabitSlide />
         <Footer />
       </div>

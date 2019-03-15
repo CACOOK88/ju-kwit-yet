@@ -7,7 +7,7 @@ export default function index() {
     <div className="jumbotron">
       <div className="overlay"></div>
       <img src={mainLogo} alt="Logo"></img>
-      <h3>quick intro here</h3>
+      <h3>The no-frills habit tracker.</h3>
     </div>
   )
 }

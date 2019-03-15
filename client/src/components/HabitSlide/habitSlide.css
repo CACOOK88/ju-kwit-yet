@@ -9,8 +9,8 @@
 } */
 
 .sliderImageContent {
-  height: 400px;
-  width: auto;
+  height: 800px;
+  width: 100%;
 }
 
 .slider {
@@ -98,3 +98,11 @@
 	left: -100%;
 }
 
+.center {
+	position: absolute;
+	margin-top: 18px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: 42px;
+}
