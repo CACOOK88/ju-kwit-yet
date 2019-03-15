@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Navbar from '../components/Navbar'
-import Jumbotron from '../components/Jumbotron'
 import Footer from '../components/Footer'
-import HabitSlide from '../components/HabitSlide'
+import MainContent from '../components/MainContent'
 
 
 export default class Home extends Component {
@@ -79,6 +78,14 @@ export default class Home extends Component {
     })
   }
 
+  addHabit = () => {
+
+  }
+
+  updateHabit = () => {
+
+  }
+
   render() {
     const { loggedIn, userName, password } = this.state
     return (
@@ -92,8 +99,10 @@ export default class Home extends Component {
           password={password}
           loggedIn={loggedIn}
         />
-        <Jumbotron />
-        <HabitSlide />
+        <MainContent 
+          loggedIn={loggedIn}
+          addHabit={this.addHabit}
+        />
         <Footer />
       </div>
     )
