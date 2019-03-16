@@ -7,27 +7,51 @@ import MainContent from '../components/MainContent'
 
 export default class Home extends Component {
   state = {
-    loggedIn: false,
-    userId: '',
-    userName: '',
+    loggedIn: true,
+    userId: '1',
+    userName: '1',
     password: '',
-    habitData: []
+    habits: [],
+    userHabitList: [],
+    userHabitData: []
   }
 
   componentDidMount() {
     this.isUserLoggedIn()
   }
-
+  
   isUserLoggedIn = () => {
-    console.log(`inside isUserLoggedIn`)
     const { loggedIn, userId } = this.state
     if ( loggedIn && userId !== '') {
       this.getUserHabitData(userId)
+      this.getUserHabitList(userId)
     }
   }
 
+  getAllHabits = () => {
+    axios.get('/api/habits')
+      .then(res => {
+        const habitData = res.data.map(item => {
+          const data = {
+            id: item.id,
+            habit: item.habitName
+          }
+          return data
+        })
+        console.log(`made it to getallhabits`, habitData)
+        this.setState({habits: habitData})
+      })
+  }
+
+  getUserHabitList = () => {
+    axios.get('/api/userhabits/' + this.state.userId)
+      .then(res => {
+        console.log(`made it to getuserhabitlist`, res.data)
+      })
+  }
+
   getUserHabitData = (userId) => {
-    console.log('inside getUserHabitData')
+    // console.log('inside getUserHabitData')
   }
 
   onChange = (e) => {
@@ -78,8 +102,34 @@ export default class Home extends Component {
     })
   }
 
-  addHabit = () => {
+  addHabit = (habit) => {
+    const habitNames = this.state.habits.map((item) => {
+      return item.habit
+    })
 
+    if ( habitNames.includes(habit) ) {
+      // HABIT IS ALREADY IN HABITS DB
+      // CHECK IF HABIT IS IN USER HABITS
+      if ( this.state.userHabitList.includes(habit) ) {
+        return false
+      }
+      axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
+        .then(res => {
+          console.log(`add to userhabits table response`, res.data)
+        })
+      // IF NOT, ADD HABIT TO USER HABITS AND RECORDS TABLES
+    } else {
+      // HABIT DOES NOT EXIST IN HABITS DB
+      axios.post('/api/habits', {habitName: habit})
+        .then(res => {
+          console.log(`created new habit in habits db`, res.data)
+        })
+      axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
+        .then(res => {
+          console.log(`created new habit to userhabits`, res.data)
+        })
+      // THEN ADD HABIT TO USER HABITS AND RECORDS TABLES
+    }
   }
 
   updateHabit = () => {
@@ -87,7 +137,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { loggedIn, userName, password } = this.state
+    const { loggedIn, userName, password, habits } = this.state
     return (
       <div>
         <Navbar 
@@ -102,6 +152,8 @@ export default class Home extends Component {
         <MainContent 
           loggedIn={loggedIn}
           addHabit={this.addHabit}
+          getAllHabits={this.getAllHabits}
+          habits={habits}
         />
         <Footer />
       </div>

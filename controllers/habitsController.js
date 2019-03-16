@@ -2,6 +2,7 @@ const db = require('../models')
 
 module.exports = {
   findAll: function (req, res) {
+    console.log(`inside api/habits findAll`)
     db.Habits.findAll({})
       .then(function(allHabits) {
         res.json(allHabits)

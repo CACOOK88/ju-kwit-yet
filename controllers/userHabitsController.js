@@ -9,7 +9,7 @@ module.exports = {
   },
 
   findById: function(req, res) {
-    db.UserHabits.findOne({
+    db.UserHabits.findAll({
       where: {
         userId: req.params.id
       }
@@ -30,7 +30,7 @@ module.exports = {
     db.UserHabits.destroy({
       where: {
         userId: req.params.id,
-        habitId: req.body.habitId
+        habitName: req.body.habitName
       }
     })
       .then(function(response) {

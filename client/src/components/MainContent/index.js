@@ -5,11 +5,15 @@ import AddHabit from '../AddHabit'
 import HabitCard from '../HabitCard'
 
 export default function index(props) {
-    const { loggedIn } = props
+    const { loggedIn, addHabit, getAllHabits, habits } = props
     if (loggedIn) {
       return (
         <div>
-          <AddHabit />
+          <AddHabit 
+            addHabit={addHabit}
+            getAllHabits={getAllHabits}
+            habits={habits}
+          />
           <HabitCard />
         </div>
       )

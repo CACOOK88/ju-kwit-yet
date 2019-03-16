@@ -31,7 +31,13 @@ export default class index extends Component {
           <input type="text" placeholder="Enter Username" name="userName" value={userName} onChange={onChange} />
 
           <label htmlFor="password">Password: </label>
-          <input type="password" placeholder="Enter Password" name="password" value={password} onChange={onChange} />
+          <input 
+            type="password" 
+            placeholder="Enter Password" 
+            name="password" 
+            value={password} 
+            onChange={onChange}
+            />
 
           <button>LOGIN</button>
         </form>
