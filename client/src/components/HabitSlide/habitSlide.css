@@ -100,9 +100,24 @@
 
 .center {
 	position: absolute;
-	margin-top: 18px;
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 	text-align: center;
-	font-size: 42px;
+	font-size: 36px;
+}
+
+.overlay {
+	position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  
+}
+
+.itemTitle {
+	margin-bottom: 12px;
+}
+
+button {
+	padding: 12px;
+	font-size: 16px;
 }
