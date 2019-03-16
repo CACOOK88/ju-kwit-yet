@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    habitID: {
+    habitName: {
       type: DataTypes.INTEGER,
       allowNull: false
     },

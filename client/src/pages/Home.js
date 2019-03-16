@@ -7,9 +7,9 @@ import MainContent from '../components/MainContent'
 
 export default class Home extends Component {
   state = {
-    loggedIn: true,
-    userId: '1',
-    userName: '1',
+    loggedIn: false,
+    userId: '',
+    userName: '',
     password: '',
     habits: [],
     userHabitList: [],
@@ -113,11 +113,13 @@ export default class Home extends Component {
       if ( this.state.userHabitList.includes(habit) ) {
         return false
       }
+
       axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
         .then(res => {
           console.log(`add to userhabits table response`, res.data)
         })
       // IF NOT, ADD HABIT TO USER HABITS AND RECORDS TABLES
+
     } else {
       // HABIT DOES NOT EXIST IN HABITS DB
       axios.post('/api/habits', {habitName: habit})
@@ -128,8 +130,12 @@ export default class Home extends Component {
         .then(res => {
           console.log(`created new habit to userhabits`, res.data)
         })
-      // THEN ADD HABIT TO USER HABITS AND RECORDS TABLES
+      // THEN ADD HABIT TO USER HABIT RECORDS TABLES
     }
+  }
+
+  addHabitRecord = (userID, HabitName, date, success) => {
+
   }
 
   updateHabit = () => {
