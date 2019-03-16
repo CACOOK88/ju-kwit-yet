@@ -17,7 +17,7 @@ function HabitSlide() {
 						<div className="center">
 							<h2 className="itemTitle">{item.title}</h2>								
 							<p>{item.description}</p>
-							<button>{item.button}</button>
+							<button className="itemButton">{item.button}</button>
 						</div>
 					</div>
 				))}
