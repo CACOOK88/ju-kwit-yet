@@ -7,42 +7,42 @@ import newBeer from '../Images/new-beer.jpg'
 
 export default [
 	{
-    title: 'Be Active',	
+    title: 'BE ACTIVE',	
     image: beActive,
     name: 'Weights',
     description: 'Track the days you meet your fitness goals.',
     button: 'REGISTER'
     },
     {
-    title: 'Stop Smoking',		
+    title: 'STOP SMOKING',		
     image: stopSmoking,
     name: 'No Smoking',
     description: 'Every day you manage not to smoke, you should celebrate. Mark it.',
     button: 'REGISTER'
     },
     {
-    title: 'Talk to Someone New',		
+    title: 'TALK TO SOMEONE NEW',		
     image: talkNew,
     name: 'Friends',
     description: 'Record every day you push yourself to talk to someone new.',
     button: 'REGISTER'
     },
     {
-    title: 'Drink More Water',	
+    title: 'DRINK MORE WATER',	
     image: drinkWater,
     name: 'Water',
     description: "Stay hydrated. Catalog every day you manage to drink to your goal.",
     button: 'REGISTER'
     },
     {
-    title: 'Eat More Avocado Toast',		
+    title: 'EAT MORE AVOCADO',		
     image: avocadoToast,
     name: 'Toast',
     description: 'Eating well is essential. Push yourself to make that effort.',
     button: 'REGISTER'
     },
     {
-    title: 'Try a New Beer',		
+    title: 'TRY A NEW BEER',		
     image: newBeer,
     name: 'Beer',
     description: 'Make an attempt to culture yourself.',

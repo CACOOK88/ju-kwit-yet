@@ -114,7 +114,8 @@
 }
 
 .itemTitle {
-	margin-bottom: 12px;
+	margin-bottom: 64px;
+	margin-top: 64px;
 }
 
 button {
