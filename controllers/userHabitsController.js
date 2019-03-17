@@ -15,7 +15,10 @@ module.exports = {
       }
     })
       .then(function(singleUserHabits) {
-        res.json(singleUserHabits)
+        const habitNames = singleUserHabits.map(item => {
+          return item.habitName
+        })
+        res.json(habitNames)
       })
   },
 

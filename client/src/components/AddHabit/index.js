@@ -32,6 +32,7 @@ export default class index extends Component {
       habit = this.state.selected
     }
     this.props.addHabit(habit)
+    this.setState({newHabit: ''})
   }
 
   render() {
@@ -50,7 +51,7 @@ export default class index extends Component {
             placeholder="" 
             name="newHabit" 
             onChange={this.onInputChange} 
-            value={this.setState.input}
+            value={this.state.newHabit}
             disabled={this.state.selected === "default" ? false : true}
           ></input>
           <button>Add New Habit</button>

@@ -5,7 +5,7 @@ import AddHabit from '../AddHabit'
 import HabitCard from '../HabitCard'
 
 export default function index(props) {
-    const { loggedIn, addHabit, getAllHabits, habits } = props
+    const { loggedIn, addHabit, getAllHabits, habits, userHabitList } = props
     if (loggedIn) {
       return (
         <div>
@@ -14,7 +14,14 @@ export default function index(props) {
             getAllHabits={getAllHabits}
             habits={habits}
           />
-          <HabitCard />
+          {userHabitList.reverse().map((habit, i) => {
+            return (
+              <HabitCard
+                key={i}
+                habit={habit}
+              />
+            )
+          })}
         </div>
       )
     }
