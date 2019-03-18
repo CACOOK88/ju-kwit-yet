@@ -25,5 +25,13 @@ module.exports = {
       .then(function(userHabitRecords) {
         res.json(userHabitRecords)
       })
+  },
+
+  deleteRecord: function(req,res) {
+    db.HabitRecords.destroy({
+      where: {
+        id: req.body.id
+      }
+    })
   }
 }
