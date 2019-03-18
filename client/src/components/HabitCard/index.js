@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
+import { DatePicker } from '@y0c/react-datepicker';
 import './HabitCard.css'
 
+
 export default class index extends Component {
+
+  onChange = (date) => {
+    console.log(date);
+  }
+
   render() {
     return (
       <div className="habitCard">
@@ -51,16 +58,20 @@ export default class index extends Component {
         </div>
 
 <div className="confirmContainer">
-          <div className="captions status">
-            <div className="">Completed</div>
-            <i className="fa fa-check historyBox"></i>
+
+          <DatePicker className="calendar" locale="ko" onChange={this.onChange}/>
+          <div className="completedContainer">
+            <div className="captions status">
+              <div>Completed</div>
+              <i className="fa fa-check historyBox"></i>
+            </div>
+            
+            <div className="captions status">
+              <div>Not Completed</div>
+              <i className="fa fa-close historyBox"></i>
+            </div>
           </div>
-          
-          <div className="captions status">
-            <div>Not Completed</div>
-            <i className="fa fa-close historyBox"></i>
-          </div>
-          </div>
+</div>
           
         </div>
       </div>
