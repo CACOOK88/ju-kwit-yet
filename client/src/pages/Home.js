@@ -64,17 +64,29 @@ export default class Home extends Component {
 
   fillHabitRecordHistory = () => {
     const {userHabitList, userHabitData} = this.state
-    // const userHabitsLength = userHabitList.length
     const sortedHabitArray = userHabitList.map( userHabit => {
       return userHabitData.filter( data => {
         return userHabit === data.habitName
       })
     })
-    console.log(sortedHabitArray)
-    const [one, two, three] = sortedHabitArray
-    console.log(one)
-    console.log(two)
-    console.log(three)
+    for (let i = 0; i < sortedHabitArray.length; i++ ) {
+      const doesTodayExist = sortedHabitArray[i].filter(data => {
+        return data.date === moment().format("YYYYMMDD")
+      })
+      if ( !doesTodayExist.length ) {
+        const reversedArray = sortedHabitArray[i].reverse()
+        const [firstItem] = reversedArray
+        const {date, habitName} = firstItem
+        const today = moment()
+        const missingDayCount = today.diff(date, 'days')
+        console.log(missingDayCount)
+        for ( let i = 0; i < missingDayCount; i++ ) {
+          const counter = i+1
+          let newDate = moment(date).add(counter, 'days').format('YYYYMMDD')
+          this.addHabitRecord(habitName, newDate, 'null')
+        }
+      }
+    }
   }
 
   onChange = (e) => {
@@ -143,7 +155,7 @@ export default class Home extends Component {
             this.getAllHabits()
           })
         // THEN ADD FIRST HABIT RECORD
-        this.addHabitRecord( habit, moment().format("YYYYMMDD"), "null")
+        this.addHabitRecord( habit, moment().subtract(2, "days").format("YYYYMMDD"), "null")
       }
       
     } // ELSE IF HABIT HAS NOT BEEN CREATED BY ANY USER
@@ -159,7 +171,7 @@ export default class Home extends Component {
           this.getAllHabits()
         })
         // THEN ADD FIRST HABIT RECORD
-        this.addHabitRecord( habit, moment().format("YYYYMMDD"), "null")
+        this.addHabitRecord( habit, moment().subtract(2, "days").format("YYYYMMDD"), "null")
     }
   }
 
