@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import moment from 'moment'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import MainContent from '../components/MainContent'
@@ -21,7 +22,6 @@ export default class Home extends Component {
   }
   
   isUserLoggedIn = () => {
-    console.log(`inside isUserLoggedIn`)
     const { loggedIn, userId } = this.state
     if ( loggedIn && userId !== '') {
       this.getUserHabitRecords(userId)
@@ -39,7 +39,6 @@ export default class Home extends Component {
           }
           return data
         })
-        console.log(`made it to getallhabits`, habitData)
         this.setState({habits: habitData})
       })
   }
@@ -47,13 +46,19 @@ export default class Home extends Component {
   getUserHabitList = () => {
     axios.get('/api/userhabits/' + this.state.userId)
       .then(res => {
-        console.log(`made it to getuserhabitlist`, res.data)
         this.setState({userHabitList: res.data})
+      })
+      .then(() => {
+        this.fillHabitRecordHistory()
       })
   }
 
   getUserHabitRecords = (userId) => {
-    console.log('inside getUserHabitRecords')
+    // console.log('inside getUserHabitRecords', userId)
+    axios.get('/api/habitrecords/'+userId)
+      .then(res => {
+        this.setState({userHabitData: res.data})
+      })
   }
 
   onChange = (e) => {
@@ -63,35 +68,35 @@ export default class Home extends Component {
   }
 
   onLoginSubmit = (userName, password) => {
-    axios.post('/api/users/login', {userName, password})
-      .then(result => {
-        this.setState(
-          {
-            loggedIn: true,
-            userId: result.data.id,
-            userName: result.data.userName,
-            password: ''
+    if (userName && password) {
+      axios.post('/api/users/login', {userName, password})
+        .then(result => {
+          this.setState(
+            {
+              loggedIn: true,
+              userId: result.data.id,
+              userName: result.data.userName,
+              password: ''
+            }
+          )
+          this.getUserHabitRecords(this.state.userId)
+          this.getUserHabitList()
+        })
+        .catch(err => {
+          if (err) {
+            console.log(`ERROR`)
+            console.log(err)
           }
-        )
-        this.getUserHabitRecords(this.state.userId)
-        this.getUserHabitList()
-      })
-      .catch(err => {
-        if (err) {
-          console.log(`ERROR`)
-          console.log(err)
-        }
-      })
+        })
+    }
   }
 
   onRegisterSubmit = (id, userName) => {
-    console.log(`inside onRegisterSubmit`)
     this.setState({
       userId: id,
       userName: userName,
       loggedIn: true
     })
-    console.log(this.state)
   }
 
   onLogout = () => {
@@ -101,7 +106,9 @@ export default class Home extends Component {
       userId: '',
       userName: '',
       password: '',
-      habitData: []
+      habits: [],
+      userHabitList: [],
+      userHabitData: []
     })
   }
 
@@ -109,40 +116,72 @@ export default class Home extends Component {
     const habitNames = this.state.habits.map((item) => {
       return item.habit
     })
-
+    
+    // IF HABIT HAS ALREADY BEEN CREATED BY ANY USER...
     if ( habitNames.includes(habit) ) {
-      if ( !this.state.userHabitList.includes(habit) ) {
+      // AND IF LOGGED IN USER ALREADY HAS HABIT
+      if ( this.state.userHabitList.includes(habit) ) {
+        //NO NEED TO ADD HABIT
         console.log(`habit already assigned to user`)
       } else {
+        //ADD HABIT TO USER HABITS TABLE
         axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
           .then(res => {
             console.log(`add to userhabits table response`, res.data)
+            this.getAllHabits()
+            this.getUserHabitList()
           })
-        // ////////////////////////////////////////////////
-        // ////////////////////////////////////////////////
-        // ////////////////////////////////////////////////
-        // ADD HABIT TO HABIT RECORDS TABLE HERE
+        // THEN ADD FIRST HABIT RECORD
+        this.addHabitRecord( habit, moment().format("YYYYMMDD"), "null")
       }
-    } else {
+      
+    } // ELSE IF HABIT HAS NOT BEEN CREATED BY ANY USER
+    else {
+      // ADD HABIT TO HABIT TABLE
       axios.post('/api/habits', {habitName: habit})
         .then(res => {
-          console.log(`created new habit in habits db`, res.data)
+          // console.log(`created new habit in habits db`, res.data)
         })
+      // THEN ADD HABIT TO USER HABITS TABLE
       axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
         .then(res => {
-          console.log(`created new habit to userhabits`, res.data)
           this.getAllHabits()
           this.getUserHabitList()
         })
-      // //////////////////////////////////////////////////////////
-      // //////////////////////////////////////////////////////////
-      // //////////////////////////////////////////////////////////
-      // THEN ADD HABIT TO USER HABIT RECORDS TABLES
+        // THEN ADD FIRST HABIT RECORD
+        this.addHabitRecord( habit, moment().format("YYYYMMDD"), "null")
     }
   }
 
-  addHabitRecord = (userID, HabitName, date, success) => {
+  addHabitRecord = ( habitName, date, success) => {
+    const habitRecordExists = this.state.userHabitData.filter(item => {
+      return item.date === date && item.habitName === habitName
+    })
+    if ( habitRecordExists.length > 0 ) {
+      console.log(`habit with date already exists`)
+    } else {
+      axios.post('/api/habitrecords', {
+        userID: this.state.userId,
+        habitName: habitName,
+        date: date,
+        success: success
+      })
+        .then(res => {
+          this.getUserHabitRecords()
+        })
+    }
+  }
 
+  fillHabitRecordHistory = () => {
+    console.log(`inside fill habits`)
+    const {userHabitList, userHabitData} = this.state
+    console.log(userHabitData, userHabitList)
+    const sortedHabitArray = userHabitList.map( userHabit => {
+      return userHabitData.filter( data => {
+        return userHabit === data.habitName
+      })
+    })
+    console.log(sortedHabitArray)
   }
 
   updateHabit = () => {

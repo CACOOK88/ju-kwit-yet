@@ -51,7 +51,6 @@ module.exports = {
   },
 
   create: function(req, res) {
-    console.log(req.body)
     //create user and save encrypted password
     const { firstName, lastName, email, userName, password } = req.body
     let errors = []
@@ -67,7 +66,6 @@ module.exports = {
     if ( errors.length > 0 ) {
       res.json({errors})
     } else {
-      console.log(`inside /api/users/register create function`)
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(password, salt, (err, hash) => {
           if (err) throw err

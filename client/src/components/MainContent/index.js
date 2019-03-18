@@ -14,7 +14,10 @@ export default function index(props) {
             getAllHabits={getAllHabits}
             habits={habits}
           />
-          {userHabitList.reverse().map((habit, i) => {
+          {userHabitList.length === 0 ?
+            <h1>No Habits</h1>
+            :
+            userHabitList.reverse().map((habit, i) => {
             return (
               <HabitCard
                 key={i}
