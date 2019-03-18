@@ -64,12 +64,17 @@ export default class Home extends Component {
 
   fillHabitRecordHistory = () => {
     const {userHabitList, userHabitData} = this.state
+    const userHabitsLength = userHabitList.length
     const sortedHabitArray = userHabitList.map( userHabit => {
       return userHabitData.filter( data => {
         return userHabit === data.habitName
       })
     })
     console.log(sortedHabitArray)
+    const [one, two, three] = sortedHabitArray
+    console.log(one)
+    console.log(two)
+    console.log(three)
   }
 
   onChange = (e) => {
