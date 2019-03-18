@@ -12,10 +12,12 @@ function HabitSlide() {
 					<div key={index}>   
                     {/* what the code was 
                     style={{ background: `url('${item.image}') no-repeat center center` }}    */}              
-                      <img src={item.image} alt={item.name} className="sliderImageContent" /> 
+										<img src={item.image} alt={item.name} className="sliderImageContent" />
+										<div className="overlay"></div> 
 						<div className="center">
-							<h2>{item.title}</h2>								
+							<h2 className="itemTitle">{item.title}</h2>								
 							<p>{item.description}</p>
+							<button className="itemButton">{item.button}</button>
 						</div>
 					</div>
 				))}

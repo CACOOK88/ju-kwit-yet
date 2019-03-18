@@ -2,20 +2,60 @@ import React, { Component } from 'react'
 import './AddHabit.css'
 
 export default class index extends Component {
+  state = {
+    selected: 'default',
+    newHabit: ''
+  }
+
+  componentDidMount() {
+    this.props.getAllHabits()
+  }
+
+  onChange = (e) => {
+    this.setState({
+      selected: e.target.value
+    })
+  }
+
+  onInputChange = (e) => {
+    const state = this.state
+    state[e.target.name] = e.target.value
+    this.setState(state)
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault()
+    let habit;
+    if ( this.state.selected === 'default' ) {
+      habit = this.state.newHabit
+    } else {
+      habit = this.state.selected
+    }
+    this.props.addHabit(habit)
+    this.setState({newHabit: ''})
+  }
+
   render() {
     return (
       <div className="addHabit">
-        <div className="habitContainer">
+        <form onSubmit={this.onSubmit} className="addHabitForm">
           <h3>Add Habit</h3>
-          <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+          <select onChange={this.onChange} value={this.state.selected}>
+            <option value="default" default>Select or Create New Habit</option>
+            {this.props.habits.map(habit => {
+              return <option key={habit.id} value={habit.habit}>{habit.habit}</option>
+            })}
           </select>
-          <input type="text"></input>
-          <i className="fa fa-check addHabitCheck"></i>
-        </div>
+          <input 
+            type="text" 
+            placeholder="" 
+            name="newHabit" 
+            onChange={this.onInputChange} 
+            value={this.state.newHabit}
+            disabled={this.state.selected === "default" ? false : true}
+          ></input>
+          <button>Add New Habit</button>
+        </form>
       </div>
     )
   }

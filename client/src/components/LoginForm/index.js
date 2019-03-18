@@ -27,11 +27,17 @@ export default class index extends Component {
     return (
       <div className="loginForm">
         <form method="post" onSubmit={this.onSubmit}>
-          <label htmlFor="userName">User Name: </label>
+          <label htmlFor="userName">USERNAME: </label>
           <input type="text" placeholder="Enter Username" name="userName" value={userName} onChange={onChange} />
 
-          <label htmlFor="password">Password: </label>
-          <input type="password" placeholder="Enter Password" name="password" value={password} onChange={onChange} />
+          <label htmlFor="password">PASSWORD: </label>
+          <input 
+            type="password" 
+            placeholder="Enter Password" 
+            name="password" 
+            value={password} 
+            onChange={onChange}
+            />
 
           <button>LOGIN</button>
         </form>

@@ -6,8 +6,8 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    habitID: {
-      type: DataTypes.INTEGER,
+    habitName: {
+      type: DataTypes.STRING,
       allowNull: false
     },
     date: {
@@ -16,7 +16,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     success: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      defaultValue: "null"
     }
   })
 

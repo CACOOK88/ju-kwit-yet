@@ -2,21 +2,22 @@ const db = require('../models')
 
 module.exports = {
   findAll: function (req, res) {
-    db.habitRecords.findAll({})
+    db.HabitRecords.findAll({})
       .then(function(allHabitRecords) {
         res.json(allHabitRecords)
       })
   },
 
   create: function (req, res) {
-    db.habitRecords.create(req.body)
+    console.log(`hit habit records controller function`)
+    db.HabitRecords.create(req.body)
       .then(function(newHabitRecord) {
         res.json(newHabitRecord)
       })
   },
 
   findHabitRecordsByUserId: function (req, res) {
-    db.habitRecords.findAll({
+    db.HabitRecords.findAll({
       where: {
         userId: req.params.userid
       }

@@ -18,7 +18,7 @@ export default class index extends Component {
             <i className="fa fa-close historyBox"></i>
           </div>
 
-          <h4 className="habitName">Drink More Water</h4>
+          <h4 className="habitName">{this.props.habit}</h4>
           
         <div className="weekHistoryContainer">
           <div className="captions weekday">
