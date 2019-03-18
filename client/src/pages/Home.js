@@ -24,8 +24,7 @@ export default class Home extends Component {
   isUserLoggedIn = () => {
     const { loggedIn, userId } = this.state
     if ( loggedIn && userId !== '') {
-      this.getUserHabitRecords(userId)
-      this.getUserHabitList(userId)
+      this.getAllHabits()
     }
   }
 
@@ -39,26 +38,38 @@ export default class Home extends Component {
           }
           return data
         })
-        this.setState({habits: habitData})
+        this.setState({habits: habitData}, () => {
+          this.getUserHabitList()
+        })
       })
   }
 
   getUserHabitList = () => {
     axios.get('/api/userhabits/' + this.state.userId)
       .then(res => {
-        this.setState({userHabitList: res.data})
-      })
-      .then(() => {
-        this.fillHabitRecordHistory()
+        this.setState({userHabitList: res.data}, () => {
+          this.getUserHabitRecords()
+        })
       })
   }
 
-  getUserHabitRecords = (userId) => {
-    // console.log('inside getUserHabitRecords', userId)
-    axios.get('/api/habitrecords/'+userId)
+  getUserHabitRecords = () => {
+    axios.get('/api/habitrecords/'+ this.state.userId)
       .then(res => {
-        this.setState({userHabitData: res.data})
+        this.setState({userHabitData: res.data}, () => {
+          this.fillHabitRecordHistory()
+        })
       })
+  }
+
+  fillHabitRecordHistory = () => {
+    const {userHabitList, userHabitData} = this.state
+    const sortedHabitArray = userHabitList.map( userHabit => {
+      return userHabitData.filter( data => {
+        return userHabit === data.habitName
+      })
+    })
+    console.log(sortedHabitArray)
   }
 
   onChange = (e) => {
@@ -71,16 +82,12 @@ export default class Home extends Component {
     if (userName && password) {
       axios.post('/api/users/login', {userName, password})
         .then(result => {
-          this.setState(
-            {
-              loggedIn: true,
-              userId: result.data.id,
-              userName: result.data.userName,
-              password: ''
-            }
-          )
-          this.getUserHabitRecords(this.state.userId)
-          this.getUserHabitList()
+          this.setState({
+            loggedIn: true,
+            userId: result.data.id,
+            userName: result.data.userName,
+            password: ''
+          })
         })
         .catch(err => {
           if (err) {
@@ -129,7 +136,6 @@ export default class Home extends Component {
           .then(res => {
             console.log(`add to userhabits table response`, res.data)
             this.getAllHabits()
-            this.getUserHabitList()
           })
         // THEN ADD FIRST HABIT RECORD
         this.addHabitRecord( habit, moment().format("YYYYMMDD"), "null")
@@ -146,7 +152,6 @@ export default class Home extends Component {
       axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
         .then(res => {
           this.getAllHabits()
-          this.getUserHabitList()
         })
         // THEN ADD FIRST HABIT RECORD
         this.addHabitRecord( habit, moment().format("YYYYMMDD"), "null")
@@ -172,24 +177,12 @@ export default class Home extends Component {
     }
   }
 
-  fillHabitRecordHistory = () => {
-    console.log(`inside fill habits`)
-    const {userHabitList, userHabitData} = this.state
-    console.log(userHabitData, userHabitList)
-    const sortedHabitArray = userHabitList.map( userHabit => {
-      return userHabitData.filter( data => {
-        return userHabit === data.habitName
-      })
-    })
-    console.log(sortedHabitArray)
-  }
-
   updateHabit = () => {
 
   }
 
   render() {
-    const { loggedIn, userName, password, habits, userHabitList } = this.state
+    const { loggedIn, userName, password, habits, userHabitList, fillHabitRecordHistory } = this.state
     return (
       <div>
         <Navbar 
@@ -207,6 +200,7 @@ export default class Home extends Component {
           getAllHabits={this.getAllHabits}
           habits={habits}
           userHabitList={userHabitList}
+          fillHabitRecordHistory={fillHabitRecordHistory}
         />
         <Footer />
       </div>
