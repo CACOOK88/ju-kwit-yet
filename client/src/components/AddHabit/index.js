@@ -54,7 +54,7 @@ export default class index extends Component {
             value={this.state.newHabit}
             disabled={this.state.selected === "default" ? false : true}
           ></input>
-          <button>Add New Habit</button>
+          <button className="newHabitButton">Add New Habit</button>
         </form>
       </div>
     )

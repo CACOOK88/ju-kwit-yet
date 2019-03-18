@@ -9,3 +9,30 @@
 .loggedIn button {
   margin: 0 10px;
 }
+
+.loggedIn h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.logoutButton {
+  --color: white;
+  --hover: rgb(255,155,60);
+  background: none;
+  border: 1px solid;
+  border-radius: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0.5em;
+  padding: 10px;
+  color: var(--color);
+  transition: 0.25s;
+  margin-left: 30px;
+}
+
+.logoutButton:hover,
+.logoutButton:focus {
+  box-shadow: inset 11em 0 0 0 var(--hover);
+}

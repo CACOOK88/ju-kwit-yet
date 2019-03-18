@@ -1,3 +1,9 @@
+/* Orange rgb(255,155,60) */
+/* Blue Background rgb(44,62,80) */
+/* Yellow rgb(255,209,42) */
+/* Red (delete button) rgb(255,0,0) */
+/* Light Blue (delete button) rgb(149,255,245) */
+
 .addHabit {
   display: flex;
   flex-direction: column;
@@ -11,8 +17,9 @@
   justify-content: center;
   align-items: center;
   margin-top: 25px;
-  width: 85%;
-  border: 2px solid orange;
+  width: 80%;
+  /* border: 2px solid orange; */
+  background-color: rgb(255,209,42);
   border-radius: 5px;
 }
 
@@ -20,5 +27,32 @@
 .addHabit input {
   width: 200px;
   height: 25px;
-  margin-left: 10px;
+  margin-left: 20px;
+}
+
+.addHabitForm h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.newHabitButton {
+  --color: white;
+  --hover: rgb(255,155,60);
+  background: none;
+  border: 1px solid;
+  border-radius: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0.5em;
+  padding: 10px;
+  color: var(--color);
+  transition: 0.25s;
+  margin-left: 30px;
+}
+
+.newHabitButton:hover,
+.newHabitButton:focus {
+  box-shadow: inset 11em 0 0 0 var(--hover);
 }

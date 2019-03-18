@@ -14,45 +14,49 @@ export default class index extends Component {
       <div className="habitCard">
         <div className="habitCardContainer">
          
+         <div className="leftContainer">
           <div className="exit">
-            <i className="fa fa-close historyBox"></i>
+            <i className="fa fa-trash-o deleteButton"></i>
           </div>
 
-          <h4 className="habitName">{this.props.habit}</h4>
-          
+          <div className="habitNameContainer">
+            <h4 className="habitName">{this.props.habit}</h4>
+          </div>
+          </div>
+
         <div className="weekHistoryContainer">
           <div className="captions weekday">
-            <div>S</div>
+            <div className="habitText">S</div>
             <i className="fa fa-check historyBox"></i>
           </div>
             
           <div className="captions weekday">
-            <div>M</div>
+            <div className="habitText">M</div>
             <i className="fa fa-close historyBox"></i>
           </div>
 
           <div className="captions weekday">
-            <div>T</div>
+            <div className="habitText">T</div>
             <i className="fa fa-check historyBox"></i>
           </div>
 
           <div className="captions weekday">
-            <div>W</div>
+            <div className="habitText">W</div>
             <i className="fa fa-close historyBox"></i>
           </div>
 
           <div className="captions weekday">
-            <div>Th</div>
+            <div className="habitText">Th</div>
             <i className="fa fa-check historyBox"></i>
           </div>
 
           <div className="captions weekday">
-            <div>F</div>
+            <div className="habitText">F</div>
             <i className="fa fa-check historyBox"></i>
           </div>
 
           <div className="captions weekday">
-            <div>Sa</div>
+            <div className="habitText">Sa</div>
             <i className="fa fa-question historyBox"></i>
           </div>
         </div>
@@ -60,17 +64,19 @@ export default class index extends Component {
 <div className="confirmContainer">
 
           <DatePicker className="calendar" locale="ko" onChange={this.onChange}/>
+
           <div className="completedContainer">
             <div className="captions status">
-              <div>Completed</div>
-              <i className="fa fa-check historyBox"></i>
+              <div className="statusText">Did It!</div>
+              <i className="fa fa-check statusButton"></i>
             </div>
             
             <div className="captions status">
-              <div>Not Completed</div>
-              <i className="fa fa-close historyBox"></i>
+              <div className="statusText">Failed</div>
+              <i className="fa fa-close statusButton"></i>
             </div>
           </div>
+
 </div>
           
         </div>

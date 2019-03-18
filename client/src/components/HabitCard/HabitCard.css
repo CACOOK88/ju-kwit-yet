@@ -1,6 +1,13 @@
+/* Orange rgb(255,155,60) */
+/* Blue Background rgb(44,62,80) */
+/* Yellow rgb(255,209,42) */
+/* Red (delete button) rgb(255,0,0) */
+/* Light Blue (delete button) rgb(149,255,245) */
+
 .habitTitle {
   text-align: center;
   text-decoration: underline;
+  font-family: 'Roboto', sans-serif;
 }
 
 .habitCard,
@@ -13,55 +20,152 @@
   align-items: center;
 }
 
+.habitCardContainer:hover,
+.habitCardContainer:focus {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+  transition: 0.25s;
+  border-color: rgb(52,73,94);
+  background-color: rgb(52,73,94);
+}
+
 .habitCardContainer {
   flex-direction: row;
   margin-top: 15px;
-  width: 85%;
-  border: 2px solid orange;
+  width: 80%;
+  border: 2px solid rgb(52,73,94);
   border-radius: 5px;
   padding: 10px;
 }
 
-.habitCardContainer p {
+.leftContainer {
+  width: 35%;
+  flex-shrink: 1;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+/* .habitCardContainer p {
   margin-left: 20px;
   justify-content: center;
+} */
+
+.habitText {
+  font-family: 'Roboto:500', sans-serif;
 }
 
 .historyBox {
   width: 25px;
   height: 25px;
-  border: 1px solid #777;
-  background: #777;
-  border-radius: 5px;
+  border: 1px solid rgb(255,155,60);
+  background: rgb(255,155,60);
+  border-radius: 20px;
   font-size: 24px;
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 7px;
-  padding: 10px; 
+  padding: 15px; 
 }
 
+/* DELETE BUTTON */
+/* ============================================ */
 .exit {
   margin-right: 15px;
 }
 
+.deleteButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgb(255,155,60);
+  border-radius: 15px;
+  font-size: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 7px;
+  padding: 10px; 
+  cursor: pointer;
+  /* --hover: rgb(255,0,0); */
+}
+
+.deleteButton:hover,
+.deleteButton:focus {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+  transition: 0.25s;
+  border-color: rgb(255,0,0);
+  background-color: rgb(255,0,0);
+}
+/* ============================================ */
+
+.habitNameContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; 
+}
+
 .habitName {
-  margin-right: auto;
- 
+  margin-right: 30px;
+  font-family: 'Roboto:700', sans-serif;
+  font-size: 22px;
+  color: white;
 }
 
+/* HABIT COMPLETE OR NOT COMPLETED */
 .status {
-  margin-right: 10px;
-
+  margin-top: 10px;
+  margin-bottom: 7px;
+  margin-right: 8px;
+  margin-left: 8px;
+  
 }
 
-.weekday {
+.statusText {
+  font-family: 'Roboto:500', sans-serif;
+  font-size: 14px;
+}
+
+.statusButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid rgb(255,155,60);
+  border-radius: 20px;
+  font-size: 24px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 7px;
+  padding: 15px; 
+  cursor: pointer; 
+  --hover: rgb(255,209,42);
+}
+
+.statusButton:hover,
+.statusButton:focus {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+  transition: 0.25s;
+  border-color: rgb(255,209,42);
+  background-color: rgb(255,209,42);
+}
+
+/* .weekday {
   margin-right: auto;
-}
+} */
 
 .weekHistoryContainer,
 .confirmContainer {
   display: flex;
   flex-direction: row;
+}
+
+.weekHistoryContainer {
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .confirmContainer {
@@ -104,7 +208,7 @@
 }
  .range-picker-input__start, .range-picker-input__end {
 	 display: inline-flex;
-	 flex: 1;
+
 }
  .range-picker-input__start .picker-input.range input, .range-picker-input__end .picker-input.range input {
 	 width: 100%;
@@ -123,10 +227,13 @@
 	 align-items: center;
 }
  .picker-input__text {
-	 padding: 10px;
+	 padding: 5px;
 	 border: 1px solid #e4e4e4;
 	 outline: none;
-	 font-size: 16.8px;
+   font-size: 14px;
+   text-align: center;
+   width: 100%;
+   cursor: pointer;
 }
  .picker-input__text:disabled {
 	 background: #e4e4e4;
@@ -164,7 +271,7 @@
 	 outline: none;
 	 display: inline-flex;
 	 align-items: center;
-	 background: #ff5722;
+	 background: rgb(255,155,60);
 	 color: white;
 }
  .picker__container__tab button.active {
@@ -251,7 +358,7 @@
 }
  .calendar__head {
 	 position: relative;
-	 background: #ff5722;
+	 background: rgb(255,155,60);
 	 padding: 10px 6px;
 }
  .calendar__head--title {
@@ -338,11 +445,11 @@
 	 cursor: initial;
 }
  .calendar__day--start, .calendar__day--end, .calendar__day--selected {
-	 background: #ff5722;
+	 background: rgb(255,155,60);
 	 color: #fff;
 }
  .calendar__day--start:hover, .calendar__day--end:hover, .calendar__day--selected:hover {
-	 background: #ff5722;
+	 background: rgb(255,155,60);
 }
  .calendar__day--range {
 	 background: #fff3ef;
