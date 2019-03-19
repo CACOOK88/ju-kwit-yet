@@ -14,7 +14,8 @@ export default class Home extends Component {
     password: '',
     habits: [],
     userHabitList: [],
-    userHabitData: []
+    userHabitData: [],
+    sortedHabitArray: []
   }
 
   componentDidMount() {
@@ -22,6 +23,7 @@ export default class Home extends Component {
   }
   
   isUserLoggedIn = () => {
+    console.log('1')
     const { loggedIn, userId } = this.state
     if ( loggedIn && userId !== '') {
       this.getAllHabits()
@@ -29,6 +31,7 @@ export default class Home extends Component {
   }
 
   getAllHabits = () => {
+    console.log('2')
     axios.get('/api/habits')
       .then(res => {
         const habitData = res.data.map(item => {
@@ -45,6 +48,7 @@ export default class Home extends Component {
   }
 
   getUserHabitList = () => {
+    console.log('3')
     axios.get('/api/userhabits/' + this.state.userId)
       .then(res => {
         this.setState({userHabitList: res.data}, () => {
@@ -54,6 +58,7 @@ export default class Home extends Component {
   }
 
   getUserHabitRecords = () => {
+    console.log('4')
     axios.get('/api/habitrecords/'+ this.state.userId)
       .then(res => {
         this.setState({userHabitData: res.data}, () => {
@@ -63,11 +68,15 @@ export default class Home extends Component {
   }
 
   fillHabitRecordHistory = () => {
+    console.log('5')
     const {userHabitList, userHabitData} = this.state
     const sortedHabitArray = userHabitList.map( userHabit => {
       return userHabitData.filter( data => {
         return userHabit === data.habitName
       })
+    })
+    this.setState({
+      sortedHabitArray: sortedHabitArray
     })
     for (let i = 0; i < sortedHabitArray.length; i++ ) {
       const doesTodayExist = sortedHabitArray[i].filter(data => {
@@ -79,7 +88,6 @@ export default class Home extends Component {
         const {date, habitName} = firstItem
         const today = moment()
         const missingDayCount = today.diff(date, 'days')
-        console.log(missingDayCount)
         for ( let i = 0; i < missingDayCount; i++ ) {
           const counter = i+1
           let newDate = moment(date).add(counter, 'days').format('YYYYMMDD')
@@ -132,7 +140,8 @@ export default class Home extends Component {
       password: '',
       habits: [],
       userHabitList: [],
-      userHabitData: []
+      userHabitData: [],
+      sortedHabitArray: []
     })
   }
 
@@ -155,7 +164,7 @@ export default class Home extends Component {
             this.getAllHabits()
           })
         // THEN ADD FIRST HABIT RECORD
-        this.addHabitRecord( habit, moment().subtract(2, "days").format("YYYYMMDD"), "null")
+        this.addHabitRecord( habit, moment().subtract(6, "days").format("YYYYMMDD"), "null")
       }
       
     } // ELSE IF HABIT HAS NOT BEEN CREATED BY ANY USER
@@ -171,7 +180,7 @@ export default class Home extends Component {
           this.getAllHabits()
         })
         // THEN ADD FIRST HABIT RECORD
-        this.addHabitRecord( habit, moment().subtract(2, "days").format("YYYYMMDD"), "null")
+        this.addHabitRecord( habit, moment().subtract(6, "days").format("YYYYMMDD"), "null")
     }
   }
 
@@ -199,7 +208,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { loggedIn, userName, password, habits, userHabitList, fillHabitRecordHistory } = this.state
+    const { loggedIn, userName, password, habits, userHabitList, sortedHabitArray } = this.state
     return (
       <div>
         <Navbar 
@@ -217,7 +226,7 @@ export default class Home extends Component {
           getAllHabits={this.getAllHabits}
           habits={habits}
           userHabitList={userHabitList}
-          fillHabitRecordHistory={fillHabitRecordHistory}
+          sortedHabitArray={sortedHabitArray}
         />
         <Footer />
       </div>

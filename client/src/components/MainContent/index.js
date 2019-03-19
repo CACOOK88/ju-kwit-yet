@@ -5,7 +5,7 @@ import AddHabit from '../AddHabit'
 import HabitCard from '../HabitCard'
 
 export default function index(props) {
-    const { loggedIn, addHabit, getAllHabits, habits, userHabitList } = props
+    const { loggedIn, addHabit, getAllHabits, habits, userHabitList, sortedHabitArray } = props
     if (loggedIn) {
       return (
         <div>
@@ -14,17 +14,24 @@ export default function index(props) {
             getAllHabits={getAllHabits}
             habits={habits}
           />
-          {userHabitList.length === 0 ?
+          {userHabitList.length === 0 
+            ?
             <h1>No Habits</h1>
-            :
-            userHabitList.reverse().map((habit, i) => {
-            return (
-              <HabitCard
-                key={i}
-                habit={habit}
-              />
-            )
-          })}
+            : userHabitList.length === sortedHabitArray.length
+            ?
+            userHabitList.map((habit, i) => {
+              const habitData = sortedHabitArray[i]
+              return (
+                <HabitCard
+                  key={i}
+                  habit={habit}
+                  habitData={habitData}
+                  
+                />
+              )
+            })
+            : console.log(`no arrays yet`)
+          } 
         </div>
       )
     }
