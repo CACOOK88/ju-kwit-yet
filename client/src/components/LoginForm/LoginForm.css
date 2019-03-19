@@ -12,6 +12,26 @@
   margin-right: 6px;
 }
 
+/* NAVBAR LOGIN BUTTON */
+/* ===================================== */
 .loginBtn {
-  margin-right: 4px;
+  --color: white;
+  --hover: rgb(255,155,60);
+  background: none;
+  border: 1px solid;
+  border-radius: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0.5em;
+  padding: 10px;
+  color: var(--color);
+  transition: 0.25s;
+  margin-left: 10px;
 }
+
+.loginBtn:hover,
+.loginBtn:focus {
+  box-shadow: inset 11em 0 0 0 var(--hover);
+}
+/* ===================================== */

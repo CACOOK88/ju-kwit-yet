@@ -27,7 +27,7 @@ export default class index extends Component {
     return (
       <div className="loginForm">
         <form method="post" onSubmit={this.onSubmit}>
-          <label htmlFor="userName">USERNAME: </label>
+          <label htmlFor="userName">Username: </label>
           <input 
             className ="userNameInput"
             type="text"
@@ -37,7 +37,7 @@ export default class index extends Component {
             onChange={onChange}
             />
 
-          <label htmlFor="password">PASSWORD: </label>
+          <label htmlFor="password">Password:</label>
           <input 
             className="passwordInput"
             type="password" 
@@ -48,7 +48,7 @@ export default class index extends Component {
             />
 
           <button className="loginBtn">LOGIN</button>
-          <span>OR </span>
+          {/* <span>OR </span> */}
         </form>
         <Modal 
           show={this.state.showModal}
