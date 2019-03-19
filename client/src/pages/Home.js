@@ -210,8 +210,40 @@ export default class Home extends Component {
       })
   }
 
+  deleteHabit = (habit) => {
+    console.log(`deleting habit`, habit)
+    console.log(this.state.userId)
+    axios.delete('/api/habitrecords', {
+      params: {
+        userId: this.state.userId,
+        habitName: habit
+      }
+    })
+    .then(res => {
+      console.log(`habitrecord delete res`,res)
+      axios.delete('/api/userhabits', {
+        params: {
+          userId: this.state.userId,
+          habitName: habit
+        }
+      })
+        .then(res => {
+          console.log(`userhabit delete res`,res)
+          this.getUserHabitList()
+        })
+    })
+  }
+
   render() {
-    const { loggedIn, userName, password, habits, userHabitList, sortedHabitArray } = this.state
+    const { 
+      loggedIn, 
+      userName, 
+      password, 
+      habits, 
+      userHabitList, 
+      sortedHabitArray
+    } = this.state
+
     return (
       <div>
         <Navbar 
@@ -231,6 +263,7 @@ export default class Home extends Component {
           habits={habits}
           userHabitList={userHabitList}
           sortedHabitArray={sortedHabitArray}
+          deleteHabit={this.deleteHabit}
         />
         <Footer />
       </div>

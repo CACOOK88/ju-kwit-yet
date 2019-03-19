@@ -5,7 +5,7 @@ const habitRecordsController = require('../../controllers/habitsRecordsControlle
 router.route('/')
   .get(habitRecordsController.findAll)
   .post(habitRecordsController.create)
-  .delete(habitRecordsController.deleteRecord)
+  .delete(habitRecordsController.deleteRecords)
   .put(habitRecordsController.updateRecord)
 
 // MATCHES WITH /api/habitrecords/:userid

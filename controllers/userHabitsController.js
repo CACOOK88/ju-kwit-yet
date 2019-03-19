@@ -29,11 +29,12 @@ module.exports = {
       })
   },
 
-  remove: function (req, res) {
+  deleteUserHabit: function (req, res) {
+    console.log(`deleteuserhabit`, req.query)
     db.UserHabits.destroy({
       where: {
-        userId: req.params.id,
-        habitName: req.body.habitName
+        userID: req.query.userId,
+        habitName: req.query.habitName
       }
     })
       .then(function(response) {

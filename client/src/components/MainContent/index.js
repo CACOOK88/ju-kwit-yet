@@ -5,7 +5,17 @@ import AddHabit from '../AddHabit'
 import HabitCard from '../HabitCard'
 
 export default function index(props) {
-    const { loggedIn, addHabit, getAllHabits, habits, userHabitList, sortedHabitArray, updateRecord } = props
+    const { 
+      loggedIn, 
+      addHabit, 
+      getAllHabits, 
+      habits, 
+      userHabitList, 
+      sortedHabitArray, 
+      updateRecord,
+      deleteHabit
+    } = props
+
     if (loggedIn) {
       return (
         <div>
@@ -27,6 +37,7 @@ export default function index(props) {
                   habit={habit}
                   habitData={habitData}
                   updateRecord={updateRecord}
+                  deleteHabit={deleteHabit}
                 />
               )
             })

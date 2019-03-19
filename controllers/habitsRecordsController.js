@@ -42,11 +42,16 @@ module.exports = {
       })
   },
 
-  deleteRecord: function(req,res) {
+  deleteRecords: function(req,res) {
+    console.log(`deleteRecords`, req.query)
     db.HabitRecords.destroy({
       where: {
-        id: req.body.id
+        userID: req.query.userId,
+        habitName: req.query.habitName
       }
     })
+      .then(function(response) {
+        res.json(response)
+      })
   }
 }
