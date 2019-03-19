@@ -43,7 +43,6 @@ module.exports = {
   },
 
   deleteRecords: function(req,res) {
-    console.log(`deleteRecords`, req.query)
     db.HabitRecords.destroy({
       where: {
         userID: req.query.userId,

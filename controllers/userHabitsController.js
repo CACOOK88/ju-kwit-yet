@@ -30,7 +30,6 @@ module.exports = {
   },
 
   deleteUserHabit: function (req, res) {
-    console.log(`deleteuserhabit`, req.query)
     db.UserHabits.destroy({
       where: {
         userID: req.query.userId,

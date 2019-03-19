@@ -150,12 +150,10 @@ export default class Home extends Component {
       // AND IF LOGGED IN USER ALREADY HAS HABIT
       if ( this.state.userHabitList.includes(habit) ) {
         //NO NEED TO ADD HABIT
-        console.log(`habit already assigned to user`)
       } else {
         //ADD HABIT TO USER HABITS TABLE
         axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
           .then(res => {
-            console.log(`add to userhabits table response`, res.data)
             this.getAllHabits()
           })
         // THEN ADD FIRST HABIT RECORD
@@ -167,7 +165,6 @@ export default class Home extends Component {
       // ADD HABIT TO HABIT TABLE
       axios.post('/api/habits', {habitName: habit})
         .then(res => {
-          // console.log(`created new habit in habits db`, res.data)
         })
       // THEN ADD HABIT TO USER HABITS TABLE
       axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
@@ -211,8 +208,6 @@ export default class Home extends Component {
   }
 
   deleteHabit = (habit) => {
-    console.log(`deleting habit`, habit)
-    console.log(this.state.userId)
     axios.delete('/api/habitrecords', {
       params: {
         userId: this.state.userId,
@@ -220,7 +215,6 @@ export default class Home extends Component {
       }
     })
     .then(res => {
-      console.log(`habitrecord delete res`,res)
       axios.delete('/api/userhabits', {
         params: {
           userId: this.state.userId,
@@ -228,7 +222,6 @@ export default class Home extends Component {
         }
       })
         .then(res => {
-          console.log(`userhabit delete res`,res)
           this.getUserHabitList()
         })
     })
