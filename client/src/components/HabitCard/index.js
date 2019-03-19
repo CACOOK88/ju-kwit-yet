@@ -1,32 +1,31 @@
 import React, { Component } from 'react'
 import { DatePicker } from '@y0c/react-datepicker';
+import moment from 'moment'
 import Weekday from '../Weekday'
 import './HabitCard.css'
 
 
 export default class index extends Component {
   state = {
-    date: ''
+    date: moment().format('YYYYMMDD')
   }
+
   onChange = (date) => {
-    console.log(date);
     this.setState({
-      date
+      date: moment(date).format('YYYYMMDD')
     })
   }
 
   success = () => {
-    console.log(`clicked success`)
+    this.props.updateRecord(this.state.date, this.props.habit, "true")
   }
 
   failure = () => {
-    console.log(`clicked failure`)
-    console.log(this.state.date)
+    this.props.updateRecord(this.state.date, this.props.habit, "false")
   }
 
   render() {
     const lastSeven = this.props.habitData.slice(-7)
-    console.log(lastSeven)
     return (
       <div className="habitCard">
         <div className="habitCardContainer">

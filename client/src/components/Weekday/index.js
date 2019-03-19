@@ -35,14 +35,14 @@ export default function index(props) {
       <div>{day}</div>
       <div className="habitText">{moment(props.date).format('M/DD')}</div>
       <i className={ 
-        props.success === "null"
+        props.success === "false"
         ?
-        "fa historyBox fa-question"
+        "fa historyBox fa-close"
         : props.success === "true" 
         ? 
         "fa historyBox fa-check"
         :
-        "fa historyBox fa-close"
+        "fa historyBox fa-question"
       }></i>
     </div>
   )

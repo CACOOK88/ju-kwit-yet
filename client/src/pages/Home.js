@@ -23,7 +23,6 @@ export default class Home extends Component {
   }
   
   isUserLoggedIn = () => {
-    console.log('1')
     const { loggedIn, userId } = this.state
     if ( loggedIn && userId !== '') {
       this.getAllHabits()
@@ -31,7 +30,6 @@ export default class Home extends Component {
   }
 
   getAllHabits = () => {
-    console.log('2')
     axios.get('/api/habits')
       .then(res => {
         const habitData = res.data.map(item => {
@@ -48,7 +46,6 @@ export default class Home extends Component {
   }
 
   getUserHabitList = () => {
-    console.log('3')
     axios.get('/api/userhabits/' + this.state.userId)
       .then(res => {
         this.setState({userHabitList: res.data}, () => {
@@ -58,7 +55,6 @@ export default class Home extends Component {
   }
 
   getUserHabitRecords = () => {
-    console.log('4')
     axios.get('/api/habitrecords/'+ this.state.userId)
       .then(res => {
         this.setState({userHabitData: res.data}, () => {
@@ -68,7 +64,6 @@ export default class Home extends Component {
   }
 
   fillHabitRecordHistory = () => {
-    console.log('5')
     const {userHabitList, userHabitData} = this.state
     const sortedHabitArray = userHabitList.map( userHabit => {
       return userHabitData.filter( data => {
@@ -203,8 +198,16 @@ export default class Home extends Component {
     }
   }
 
-  updateHabit = () => {
-
+  updateRecord = (date, habit, success) => {
+    axios.put('/api/habitrecords', {
+      success: success,
+      habitName: habit,
+      date: date,
+      userId: this.state.userId
+    })
+      .then( res => {
+        this.getUserHabitRecords()
+      })
   }
 
   render() {
@@ -224,6 +227,7 @@ export default class Home extends Component {
           loggedIn={loggedIn}
           addHabit={this.addHabit}
           getAllHabits={this.getAllHabits}
+          updateRecord={this.updateRecord}
           habits={habits}
           userHabitList={userHabitList}
           sortedHabitArray={sortedHabitArray}

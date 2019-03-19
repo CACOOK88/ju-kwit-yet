@@ -6,6 +6,7 @@ router.route('/')
   .get(habitRecordsController.findAll)
   .post(habitRecordsController.create)
   .delete(habitRecordsController.deleteRecord)
+  .put(habitRecordsController.updateRecord)
 
 // MATCHES WITH /api/habitrecords/:userid
 router.route('/:userid')

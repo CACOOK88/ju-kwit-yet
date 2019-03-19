@@ -27,6 +27,21 @@ module.exports = {
       })
   },
 
+  updateRecord: function(req, res) {
+    db.HabitRecords.update({
+      success: req.body.success
+    }, {
+      where: {
+        userID: req.body.userId,
+        habitName: req.body.habitName,
+        date: req.body.date
+      }
+    })
+      .then(function(updatedRecord) {
+        res.json(updatedRecord)
+      })
+  },
+
   deleteRecord: function(req,res) {
     db.HabitRecords.destroy({
       where: {

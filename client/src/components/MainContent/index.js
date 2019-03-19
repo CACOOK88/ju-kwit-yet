@@ -5,7 +5,7 @@ import AddHabit from '../AddHabit'
 import HabitCard from '../HabitCard'
 
 export default function index(props) {
-    const { loggedIn, addHabit, getAllHabits, habits, userHabitList, sortedHabitArray } = props
+    const { loggedIn, addHabit, getAllHabits, habits, userHabitList, sortedHabitArray, updateRecord } = props
     if (loggedIn) {
       return (
         <div>
@@ -26,11 +26,11 @@ export default function index(props) {
                   key={i}
                   habit={habit}
                   habitData={habitData}
-                  
+                  updateRecord={updateRecord}
                 />
               )
             })
-            : console.log(`no arrays yet`)
+            : null
           } 
         </div>
       )
