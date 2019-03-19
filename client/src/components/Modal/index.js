@@ -99,7 +99,7 @@ export default class SignUpModal extends Component {
     return (
       <div className="signup">
         <div ref={this.myRef} />
-        <button onClick={this.onOpenModal}>
+        <button className="signupBtn" onClick={this.onOpenModal}>
           SIGN UP
         </button>{' '}
         
