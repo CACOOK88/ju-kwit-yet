@@ -28,13 +28,15 @@ module.exports = {
       where: { userName: userName }
     }).then(user => {
       if (!user) {
-        console.log(`no user found`)
+        res.json({errorMessage: 'Username or Password Incorrect'})
       }
       bcrypt.compare(password, user.password, (err, isMatch) => {
         if (err) throw err
         if (isMatch) {
           console.log(`matched password here`)
           res.json({id: user.id, userName: user.userName})
+        } else {
+          res.json({errorMessage: 'Username or Password Incorrect'})
         }
       })
     })

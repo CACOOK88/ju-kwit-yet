@@ -15,7 +15,8 @@ export default class Home extends Component {
     habits: [],
     userHabitList: [],
     userHabitData: [],
-    sortedHabitArray: []
+    sortedHabitArray: [],
+    loginError: ''
   }
 
   componentDidMount() {
@@ -100,14 +101,24 @@ export default class Home extends Component {
 
   onLoginSubmit = (userName, password) => {
     if (userName && password) {
+      this.setState({
+        loginError: ''
+      })
       axios.post('/api/users/login', {userName, password})
         .then(result => {
-          this.setState({
-            loggedIn: true,
-            userId: result.data.id,
-            userName: result.data.userName,
-            password: ''
-          })
+          if (result.data.errorMessage) {
+            this.setState({
+              loginError: result.data.errorMessage
+            })
+          } else {
+            this.setState({
+              loggedIn: true,
+              userId: result.data.id,
+              userName: result.data.userName,
+              password: ''
+            })
+
+          }
         })
         .catch(err => {
           if (err) {
@@ -234,7 +245,8 @@ export default class Home extends Component {
       password, 
       habits, 
       userHabitList, 
-      sortedHabitArray
+      sortedHabitArray,
+      loginError
     } = this.state
 
     return (
@@ -247,6 +259,7 @@ export default class Home extends Component {
           userName={userName}
           password={password}
           loggedIn={loggedIn}
+          loginError={loginError}
         />
         <MainContent 
           loggedIn={loggedIn}

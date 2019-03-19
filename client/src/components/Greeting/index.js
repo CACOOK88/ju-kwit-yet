@@ -3,7 +3,16 @@ import LoginForm from '../LoginForm'
 import UserGreeting from '../UserGreeting'
 
 export default function index(props) {
-  const { loggedIn, userName, password, onLoginSubmit,onRegisterSubmit, onChange, onLogout } = props
+  const { 
+    loggedIn, 
+    userName, 
+    password, 
+    onLoginSubmit,
+    onRegisterSubmit, 
+    onChange, 
+    onLogout,
+    loginError
+  } = props
   if (loggedIn) {
     return <UserGreeting 
       userName={userName}
@@ -16,5 +25,6 @@ export default function index(props) {
     onChange={onChange}
     userName={userName}
     password={password}
+    loginError={loginError}
   />
 }

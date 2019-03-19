@@ -13,7 +13,17 @@ export default class index extends Component {
   }
 
   render() {
-    const { loggedIn, userName, password, onLoginSubmit, onRegisterSubmit, onChange, onLogout } = this.props
+    const { 
+      loggedIn, 
+      userName, 
+      password, 
+      onLoginSubmit, 
+      onRegisterSubmit, 
+      onChange, 
+      onLogout,
+      loginError
+    } = this.props
+
     return (
       <div className="navbar">
         <a href="/" ><img src={navLogo} alt="Logo"></img></a>
@@ -25,6 +35,7 @@ export default class index extends Component {
           userName={userName}
           password={password}
           loggedIn={loggedIn}
+          loginError={loginError}
         />
       </div>
     )
