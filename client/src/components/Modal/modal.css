@@ -38,3 +38,7 @@ h4 {
 .error {
   border: 1px solid red;
 }
+
+.signupBtn {
+  margin-left: 6px;
+}
