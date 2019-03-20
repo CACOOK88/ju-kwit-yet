@@ -1,0 +1,53 @@
+.loginForm {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.userNameInput {
+  margin-right: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.userText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.passwordInput {
+  margin-right: 10px;
+}
+
+.passwordText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+/* NAVBAR LOGIN BUTTON */
+/* ===================================== */
+.loginBtn {
+  --color: white;
+  --hover: rgb(255,155,60);
+  background: none;
+  border: 1px solid;
+  border-radius: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0.5em;
+  padding: 10px;
+  color: var(--color);
+  transition: 0.25s;
+  margin-left: 7px;
+  cursor: pointer;
+}
+
+.loginBtn:hover,
+.loginBtn:focus {
+  box-shadow: inset 11em 0 0 0 var(--hover);
+}
+/* ===================================== */

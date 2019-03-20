@@ -1,0 +1,110 @@
+
+.modalContainer {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+.modalForm {
+  color: black;
+}
+
+.styles_closeButton__20ID4 {
+  cursor: pointer;
+ }
+
+h4 {
+  color: black;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+}
+
+.fieldMessage {
+  color: red;
+}
+
+.modalForm input,
+.modalForm p {
+  display: inline-block;
+
+}
+
+.modalForm input {
+  margin-left: 10px;
+}
+
+.modalForm {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.lastName, 
+.password {
+  margin-left: 10px;
+}
+
+.emailInput {
+  width: 88%;
+}
+/* 
+.signup button {
+  
+} */
+
+.error {
+  border: 1px solid red;
+}
+
+.signupBtn {
+  --color: white;
+  --hover: rgb(255,155,60);
+  background: none;
+  border: 1px solid;
+  border-radius: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0.5em;
+  padding: 10px;
+  color: var(--color);
+  transition: 0.25s;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.signupBtn:hover,
+.signupBtn:focus {
+  box-shadow: inset 11em 0 0 0 var(--hover);
+}
+
+
+.submitBtn {
+  --color: white; 
+  /* --hover: rgb(255,155,60);  */
+  background: rgb(255,155,60);
+  border: 1px solid;
+  border-radius: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0.5em;
+  padding: 10px;
+  color: var(--color);
+  transition: 0.25s;
+  margin-left: 4px;
+} 
+
+/* .submitBtn:hover,
+.submitBtn:focus {
+  box-shadow: inset 11em 0 0 0 var(--hover);
+} */
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
