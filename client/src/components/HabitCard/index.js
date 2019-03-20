@@ -24,6 +24,10 @@ export default class index extends Component {
     this.props.updateRecord(this.state.date, this.props.habit, "false")
   }
 
+  delete = () => {
+    this.props.deleteHabit(this.props.habit)
+  }
+
   render() {
     const lastSeven = this.props.habitData.slice(-7)
     return (
@@ -31,7 +35,10 @@ export default class index extends Component {
         <div className="habitCardContainer">
           <div className="leftContainer">
             <div className="exit">
-              <i className="fa fa-trash-o deleteButton" data-name={this.props.habit}></i>
+              <i 
+                className="fa fa-trash-o deleteButton"
+                onClick={this.delete}
+              ></i>
             </div>
 
             <div className="habitNameContainer">

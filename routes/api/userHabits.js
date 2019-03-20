@@ -5,10 +5,10 @@ const userHabitsController = require('../../controllers/userHabitsController')
 router.route('/')
   .get(userHabitsController.findAll)
   .post(userHabitsController.create)
+  .delete(userHabitsController.deleteUserHabit)
 
 // MATCHES WITH /api/userhabits/:id
 router.route('/:id')
   .get(userHabitsController.findById)
-  .delete(userHabitsController.remove)
 
 module.exports = router

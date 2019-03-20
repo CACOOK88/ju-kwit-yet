@@ -15,7 +15,8 @@ export default class Home extends Component {
     habits: [],
     userHabitList: [],
     userHabitData: [],
-    sortedHabitArray: []
+    sortedHabitArray: [],
+    loginError: ''
   }
 
   componentDidMount() {
@@ -100,14 +101,24 @@ export default class Home extends Component {
 
   onLoginSubmit = (userName, password) => {
     if (userName && password) {
+      this.setState({
+        loginError: ''
+      })
       axios.post('/api/users/login', {userName, password})
         .then(result => {
-          this.setState({
-            loggedIn: true,
-            userId: result.data.id,
-            userName: result.data.userName,
-            password: ''
-          })
+          if (result.data.errorMessage) {
+            this.setState({
+              loginError: result.data.errorMessage
+            })
+          } else {
+            this.setState({
+              loggedIn: true,
+              userId: result.data.id,
+              userName: result.data.userName,
+              password: ''
+            })
+
+          }
         })
         .catch(err => {
           if (err) {
@@ -150,12 +161,10 @@ export default class Home extends Component {
       // AND IF LOGGED IN USER ALREADY HAS HABIT
       if ( this.state.userHabitList.includes(habit) ) {
         //NO NEED TO ADD HABIT
-        console.log(`habit already assigned to user`)
       } else {
         //ADD HABIT TO USER HABITS TABLE
         axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
           .then(res => {
-            console.log(`add to userhabits table response`, res.data)
             this.getAllHabits()
           })
         // THEN ADD FIRST HABIT RECORD
@@ -167,7 +176,6 @@ export default class Home extends Component {
       // ADD HABIT TO HABIT TABLE
       axios.post('/api/habits', {habitName: habit})
         .then(res => {
-          // console.log(`created new habit in habits db`, res.data)
         })
       // THEN ADD HABIT TO USER HABITS TABLE
       axios.post('/api/userHabits', {userID: this.state.userId, habitName: habit})
@@ -210,8 +218,37 @@ export default class Home extends Component {
       })
   }
 
+  deleteHabit = (habit) => {
+    axios.delete('/api/habitrecords', {
+      params: {
+        userId: this.state.userId,
+        habitName: habit
+      }
+    })
+    .then(res => {
+      axios.delete('/api/userhabits', {
+        params: {
+          userId: this.state.userId,
+          habitName: habit
+        }
+      })
+        .then(res => {
+          this.getUserHabitList()
+        })
+    })
+  }
+
   render() {
-    const { loggedIn, userName, password, habits, userHabitList, sortedHabitArray } = this.state
+    const { 
+      loggedIn, 
+      userName, 
+      password, 
+      habits, 
+      userHabitList, 
+      sortedHabitArray,
+      loginError
+    } = this.state
+
     return (
       <div>
         <Navbar 
@@ -222,6 +259,7 @@ export default class Home extends Component {
           userName={userName}
           password={password}
           loggedIn={loggedIn}
+          loginError={loginError}
         />
         <MainContent 
           loggedIn={loggedIn}
@@ -231,6 +269,7 @@ export default class Home extends Component {
           habits={habits}
           userHabitList={userHabitList}
           sortedHabitArray={sortedHabitArray}
+          deleteHabit={this.deleteHabit}
         />
         <Footer />
       </div>

@@ -23,7 +23,13 @@ export default class index extends Component {
   }
 
   render() {
-    const { onRegisterSubmit, onChange, onLogout, userName, password } = this.props
+    const { 
+      onRegisterSubmit, 
+      onChange, 
+      onLogout, 
+      userName, 
+      password
+    } = this.props
     return (
       <div className="loginForm">
         <form method="post" onSubmit={this.onSubmit}>
@@ -35,7 +41,7 @@ export default class index extends Component {
             name="userName"
             value={userName}
             onChange={onChange}
-            />
+          />
 
           <label className="passwordText" htmlFor="password">Password: </label>
           <input 
@@ -45,8 +51,7 @@ export default class index extends Component {
             name="password" 
             value={password} 
             onChange={onChange}
-            />
-
+          />
           <button className="loginBtn">LOGIN</button>
           {/* <span>OR </span> */}
         </form>
@@ -55,6 +60,7 @@ export default class index extends Component {
           onRegisterSubmit={onRegisterSubmit}
           onLogout={onLogout}
         />
+        
       </div>
     )
   }
