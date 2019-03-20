@@ -13,12 +13,14 @@ export default function index(props) {
     onLogout,
     loginError
   } = props
+
   if (loggedIn) {
     return <UserGreeting 
       userName={userName}
       onLogout={onLogout}
     />
   }
+  
   return <LoginForm 
     onLoginSubmit={onLoginSubmit}
     onRegisterSubmit={onRegisterSubmit}
