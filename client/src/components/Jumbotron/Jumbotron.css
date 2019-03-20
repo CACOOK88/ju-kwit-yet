@@ -4,13 +4,13 @@
   background: url('../Images/journal.jpeg');
   background-size: cover;
   height: 50vw;
-  max-height: 600px;
+  max-height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  border-bottom: 5px rgb(44,62,80) solid;
+  border-bottom: 25px rgb(44,62,80) solid;
 }
 
 .jumbotron .overlay {
@@ -35,6 +35,6 @@
 
 .jumbotron h3 {
   font-family: 'Roboto', sans-serif;
-  font-size: 2.5rem;
+  font-size: 30px;
   z-index: 2;
 }
