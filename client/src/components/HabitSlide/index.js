@@ -13,7 +13,7 @@ function HabitSlide() {
 										<div className="overlay"></div> 
 						<div className="center">
 							<h2 className="itemTitle">{item.title}</h2>								
-							<p>{item.description}</p>
+							<p className="itemDescription">{item.description}</p>
 							{/* <button className="itemButton">{item.button}</button> */}
 						</div>
 					</div>
