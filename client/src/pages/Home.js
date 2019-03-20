@@ -152,12 +152,13 @@ export default class Home extends Component {
   }
 
   addHabit = (habit) => {
+    const upperHabit = habit.toUpperCase()
     const habitNames = this.state.habits.map((item) => {
-      return item.habit
+      return item.habit.toUpperCase()
     })
     
     // IF HABIT HAS ALREADY BEEN CREATED BY ANY USER...
-    if ( habitNames.includes(habit) ) {
+    if ( habitNames.includes(upperHabit) ) {
       // AND IF LOGGED IN USER ALREADY HAS HABIT
       if ( this.state.userHabitList.includes(habit) ) {
         //NO NEED TO ADD HABIT
