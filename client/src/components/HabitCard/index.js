@@ -66,7 +66,7 @@ export default class index extends Component {
             <div className="completedContainer">
               <div className="captions status">
                 <div className="statusText">Did It!</div>
-                <i className="fa fa-check statusButton" onClick={this.success}></i>
+                <i className="fa fa-check statusButtonSuccess" onClick={this.success}></i>
               </div>
               
               <div className="captions status">

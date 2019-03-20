@@ -5,11 +5,26 @@
 }
 
 .userNameInput {
-  margin-right: 4px;
+  margin-right: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.userText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  margin-right: 5px;
 }
 
 .passwordInput {
-  margin-right: 6px;
+  margin-right: 10px;
+}
+
+.passwordText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  margin-right: 5px;
 }
 
 /* NAVBAR LOGIN BUTTON */
@@ -27,7 +42,8 @@
   padding: 10px;
   color: var(--color);
   transition: 0.25s;
-  margin-left: 10px;
+  margin-left: 7px;
+  cursor: pointer;
 }
 
 .loginBtn:hover,

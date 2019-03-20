@@ -1,6 +1,6 @@
 /* Orange rgb(255,155,60) */
 /* Blue Background rgb(44,62,80) */
-/* Yellow rgb(255,209,42) */
+/* blue rgb(55,152,220) */
 /* Red (delete button) rgb(255,0,0) */
 /* Light Blue (delete button) rgb(149,255,245) */
 
@@ -19,7 +19,7 @@
   margin-top: 25px;
   width: 80%;
   /* border: 2px solid orange; */
-  background-color: rgb(255,209,42);
+  background-color: rgb(255, 88, 43);
   border-radius: 5px;
 }
 

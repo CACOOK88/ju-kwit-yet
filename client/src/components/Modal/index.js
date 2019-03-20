@@ -109,6 +109,7 @@ export default class SignUpModal extends Component {
           center
           container={this.myRef.current}
         >
+        <div className="modalContainer">
           <form onSubmit={this.handleSubmit}>
             <h4>Sign Up</h4>
             <p className="fieldMessage">{this.state.message}</p>
@@ -163,9 +164,10 @@ export default class SignUpModal extends Component {
 
             </label>
             <br />          
-            <button disabled={!isDisabled} type='submit' value='Submit' >Sign Up</button>
+            <button disabled={!isDisabled} className="submitBtn" type='submit' value='Submit'>Start Tracking</button>
               
           </form>
+          </div>
         </Modal>
       </div>
     );
