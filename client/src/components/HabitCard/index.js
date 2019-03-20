@@ -29,7 +29,21 @@ export default class index extends Component {
   }
 
   render() {
-    const lastSeven = this.props.habitData.slice(-7)
+    let sortedHabitData = [...this.props.habitData].sort((a, b) => {
+      let dateA = moment(a.date)
+      let dateB = moment(b.date)
+
+      let comparison = 0;
+      if (dateA > dateB) {
+        comparison = 1;
+      } else if (dateA < dateB) {
+        comparison = -1;
+      }
+      return comparison;
+
+    })
+    const lastSeven = sortedHabitData.slice(-7)
+    console.log(lastSeven)
     return (
       <div className="habitCard">
         <div className="habitCardContainer">
