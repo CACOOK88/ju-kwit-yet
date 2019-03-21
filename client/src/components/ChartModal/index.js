@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Modal from 'react-responsive-modal'
-import { VictoryPie } from 'victory'
+import { VictoryPie, VictoryContainer } from 'victory'
 import './ChartModal.css'
 
 
@@ -37,7 +37,9 @@ export default class index extends Component {
       return label.length > 0
     })
     const data = checkSuccessExists.map(item => {
-      return { x: `${item[0].success.toUpperCase()}: ${item.length}`, y: item.length}
+      return { 
+        x: `${item[0].success.toUpperCase()}: ${item.length}`, 
+        y: item.length}
     })
     return (
       <div className="chartModalContainer">
@@ -55,10 +57,11 @@ export default class index extends Component {
             <VictoryPie
               data={data}
               animate={{ duration: 2000 }}
-              colorScale={["green", "red", "#ffc107", "cyan", "navy" ]}
+              colorScale={["#23DC48", "#FF582B", "#ffc107", "cyan", "navy" ]}
               padAngle={3}
               radius={120}
               innerRadius={50}
+              containerComponent={<VictoryContainer responsive={false}/>}
             />
           </div>
         </Modal>

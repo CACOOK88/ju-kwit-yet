@@ -15,8 +15,11 @@
   font-family: 'Ostrich Sans';
   letter-spacing: 1px;
   font-size: 27px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  align-content: center;
 }
 
 .chartModal h1 {
