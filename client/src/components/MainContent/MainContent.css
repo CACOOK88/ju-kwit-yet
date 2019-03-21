@@ -1,0 +1,15 @@
+@font-face {
+	font-family: 'Ostrich Sans';
+	src: local('Ostrich Sans'), url(../fonts/ostrich-sans/OstrichSans-Medium.otf) format('opentype');
+}
+
+.noHabitOrigin {
+    font-family: 'Ostrich Sans';
+    font-size: 40px;
+    letter-spacing: 1px;
+    margin-left: 46%;
+    margin-right: 44%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    justify-content: center;
+}

@@ -1,5 +1,14 @@
-
-.habitText {
-  font-family: 'Roboto:500', sans-serif;
+@font-face {
+	font-family: 'Ostrich Sans';
+	src: local('Ostrich Sans'), url(../fonts/ostrich-sans/OstrichSans-Medium.otf) format('opentype');
 }
+
+.weekday,
+.habitText {
+  font-family: 'Ostrich Sans';
+  letter-spacing: 1px;
+  font-size: 19px;
+}
+
+
 

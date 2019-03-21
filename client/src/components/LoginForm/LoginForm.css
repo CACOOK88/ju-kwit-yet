@@ -1,3 +1,8 @@
+@font-face {
+	font-family: 'Ostrich Sans';
+	src: local('Ostrich Sans'), url(../fonts/ostrich-sans/OstrichSans-Medium.otf) format('opentype');
+}
+
 .loginForm {
   margin-left: auto;
   display: flex;
@@ -10,9 +15,10 @@
 }
 
 .userText {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Ostrich Sans';
   font-weight: 700;
-  font-size: 15px;
+  font-size: 17px;
+  letter-spacing: 1px;
   margin-right: 5px;
 }
 
@@ -21,9 +27,10 @@
 }
 
 .passwordText {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Ostrich Sans';
   font-weight: 700;
-  font-size: 15px;
+  font-size: 17px;
+  letter-spacing: 1px;
   margin-right: 5px;
 }
 
