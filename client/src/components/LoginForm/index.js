@@ -26,7 +26,6 @@ export default class index extends Component {
     const { 
       onRegisterSubmit, 
       onChange, 
-      onLogout, 
       userName, 
       password
     } = this.props
@@ -53,12 +52,10 @@ export default class index extends Component {
             onChange={onChange}
           />
           <button className="loginBtn">LOGIN</button>
-          {/* <span>OR </span> */}
         </form>
         <Modal 
           show={this.state.showModal}
           onRegisterSubmit={onRegisterSubmit}
-          onLogout={onLogout}
         />
         
       </div>

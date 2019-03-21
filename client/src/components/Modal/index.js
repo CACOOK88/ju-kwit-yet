@@ -49,7 +49,6 @@ export default class SignUpModal extends Component {
     state[e.target.name] = e.target.value
     this.setState(state)
   }
-  // changed field here to false-->was originally true, fixed red box issue?
   handleBlur = (field) => (event) => {
     this.setState({
       touched: { ...this.state.touched, [field]: true },
