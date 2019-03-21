@@ -1,3 +1,8 @@
+@font-face {
+	font-family: 'Ostrich Sans';
+	src: local('Ostrich Sans'), url(../fonts/ostrich-sans/OstrichSans-Medium.otf) format('opentype');
+}
+
 .chartModalContainer {
   display: flex;
   flex-direction: column;
@@ -7,6 +12,10 @@
 
 .chartModal {
   color: black;
+  font-family: 'Ostrich Sans';
+  letter-spacing: 1px;
+  font-size: 27px;
+  align-content: center;
 }
 
 .chartModal h1 {
