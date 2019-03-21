@@ -65,7 +65,10 @@ export default class Home extends Component {
   }
 
   fillHabitRecordHistory = () => {
+    // Grab habit arrays
     const {userHabitList, userHabitData} = this.state
+    // For each habit on the user's list, filter the data by
+    // that name to return an array of sorted data
     const sortedHabitArray = userHabitList.map( userHabit => {
       return userHabitData.filter( data => {
         return userHabit === data.habitName
@@ -74,6 +77,8 @@ export default class Home extends Component {
     this.setState({
       sortedHabitArray: sortedHabitArray
     })
+    // Check through sorted data to fill in missing days
+    // since last record
     for (let i = 0; i < sortedHabitArray.length; i++ ) {
       const doesTodayExist = sortedHabitArray[i].filter(data => {
         return data.date === moment().format("YYYYMMDD")
