@@ -3,6 +3,7 @@ import Jumbotron from '../Jumbotron'
 import HabitSlide from '../HabitSlide'
 import AddHabit from '../AddHabit'
 import HabitCard from '../HabitCard'
+import './MainContent.css'
 
 export default function index(props) {
     const { 
@@ -26,7 +27,7 @@ export default function index(props) {
           />
           {userHabitList.length === 0 
             ?
-            <h1>No Habits</h1>
+            <h1 className="noHabitOrigin">No Habits</h1>
             : userHabitList.length === sortedHabitArray.length
             ?
             userHabitList.map((habit, i) => {

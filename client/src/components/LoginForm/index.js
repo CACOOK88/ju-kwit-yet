@@ -33,7 +33,7 @@ export default class index extends Component {
     return (
       <div className="loginForm">
         <form method="post" onSubmit={this.onSubmit}>
-          <label className="userText" htmlFor="userName">Username: </label>
+          <label className="userText" htmlFor="userName">USERNAME: </label>
           <input 
             className ="userNameInput"
             type="text"
@@ -43,7 +43,7 @@ export default class index extends Component {
             onChange={onChange}
           />
 
-          <label className="passwordText" htmlFor="password">Password: </label>
+          <label className="passwordText" htmlFor="password">PASSWORD: </label>
           <input 
             className="passwordInput"
             type="password" 

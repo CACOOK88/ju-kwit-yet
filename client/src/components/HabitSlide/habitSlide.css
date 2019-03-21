@@ -132,7 +132,7 @@
 .itemTitle {
 	font-family: 'Ostrich Sans';
   	font-weight: 600;
-	font-size: 72px;
+	font-size: 60px;
 	letter-spacing: 0.1em;
 	margin-bottom: 40px;
 	margin-top: 95px;
@@ -141,5 +141,5 @@
 .center p {
 	font-family: 'Libre Baskerville';
 	font-weight: 500;
-	font-size: 25px;
+	font-size: 24px;
 }
