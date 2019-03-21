@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import { DatePicker } from '@y0c/react-datepicker';
+import ChartModal from '../ChartModal'
 import moment from 'moment'
 import Weekday from '../Weekday'
 import './HabitCard.css'
 
 
 export default class index extends Component {
-  state = {
-    date: moment().format('YYYYMMDD')
+  constructor() {
+    super()
+    this.state = {
+      date: moment().format('YYYYMMDD'),
+      showModal: false
+    }
+
   }
 
   onChange = (date) => {
@@ -43,7 +49,6 @@ export default class index extends Component {
 
     })
     const lastSeven = sortedHabitData.slice(-7)
-    console.log(lastSeven)
     return (
       <div className="habitCard">
         <div className="habitCardContainer">
@@ -54,10 +59,16 @@ export default class index extends Component {
                 onClick={this.delete}
               ></i>
             </div>
+              <ChartModal 
+                show={this.state.showModal}
+                sortedHabitData={sortedHabitData}
+                habit={this.props.habit}
+              />
 
             <div className="habitNameContainer">
               <h4 className="habitName">{this.props.habit}</h4>
             </div>
+            
           </div>
 
           <div className="weekHistoryContainer">

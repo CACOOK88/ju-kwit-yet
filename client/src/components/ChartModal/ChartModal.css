@@ -1,0 +1,23 @@
+.chartModalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chartModal {
+  color: black;
+}
+
+.chartModal h1 {
+  margin-bottom: 0;
+}
+
+.pieIcon {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pieIcon:hover {
+  color: orange;
+}
