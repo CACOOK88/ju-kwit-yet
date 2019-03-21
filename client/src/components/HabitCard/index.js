@@ -61,7 +61,9 @@ export default class index extends Component {
           </div>
 
           <div className="weekHistoryContainer">
-          {lastSeven.map( (record, i) => {
+          {lastSeven 
+            ?
+            lastSeven.map( (record, i) => {
               return(
                 <Weekday
                   key={i}
@@ -71,6 +73,8 @@ export default class index extends Component {
                 />
               )
             })
+            :
+            null
           }
           </div>
 
