@@ -33,9 +33,9 @@ export default class index extends Component {
           center
           container={this.myRef.current}
         >
-        {/* MODAL CHART CONTENT GOES HERE */}
         <div className="chartModal">
-          
+          {/* MODAL CHART CONTENT GOES HERE */}
+
         </div>
         </Modal>
       </div>
