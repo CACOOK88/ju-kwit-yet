@@ -31,8 +31,8 @@ export default class SignUpModal extends Component {
         userName: false,
         password: false,
         email: false,        
+      }
     }
-  }
     this.myRef = React.createRef();
   }
 
@@ -109,6 +109,7 @@ export default class SignUpModal extends Component {
           container={this.myRef.current}
         >
         <div className="modalContainer">
+        {/* <div className="modalHeader"></div> */}
           <form onSubmit={this.handleSubmit}>
             <h4>Sign Up</h4>
             <p className="fieldMessage">{this.state.message}</p>

@@ -12,7 +12,7 @@ export default class index extends Component {
       <div className="loggedIn">
       <h3>Welcome, {this.props.userName}</h3>
       <form onSubmit={this.onSubmit}>
-        <button className="logoutButton" >Logout</button>
+        <button className="logoutButton" >LOGOUT</button>
       </form>
       </div>
     )

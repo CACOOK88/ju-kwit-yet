@@ -3,11 +3,15 @@
 /* Red-Orange rgb(255, 88, 43) */
 
 /* Light Blue (delete button) rgb(60,214,255) */
+@font-face {
+	font-family: 'Ostrich Sans';
+	src: local('Ostrich Sans'), url(../fonts/ostrich-sans/OstrichSans-Medium.otf) format('opentype');
+}
 
 .habitTitle {
   text-align: center;
   text-decoration: underline;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Ostrich Sans';
 }
 
 .habitCard,
@@ -104,8 +108,9 @@
 
 .habitName {
   margin-right: 30px;
-  font-family: 'Roboto:700', sans-serif;
+  font-family: 'Ostrich Sans';
   font-size: 22px;
+  letter-spacing: 1px;
   color: white;
 }
 
@@ -119,8 +124,9 @@
 }
 
 .statusText {
-  font-family: 'Roboto:500', sans-serif;
-  font-size: 14px;
+  font-family: 'Ostrich Sans';
+  font-size: 19px;
+  letter-spacing: 1px;
 }
 
 .statusButton {

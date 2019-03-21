@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import './Weekday.css'
 
 export default function index(props) {
   let day

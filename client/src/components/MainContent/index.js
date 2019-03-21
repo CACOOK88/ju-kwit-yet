@@ -4,6 +4,7 @@ import HabitSlide from '../HabitSlide'
 import AddHabit from '../AddHabit'
 import NoHabits from '../NoHabits'
 import HabitCard from '../HabitCard'
+import './MainContent.css'
 
 export default function index(props) {
     const { 
@@ -27,7 +28,8 @@ export default function index(props) {
           />
           {userHabitList.length === 0 
             ?
-            <NoHabits />
+
+            <h1 className="noHabitOrigin">No Habits</h1>
 
             : userHabitList.length === sortedHabitArray.length
             ?
