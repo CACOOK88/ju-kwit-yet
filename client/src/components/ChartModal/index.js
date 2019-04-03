@@ -26,13 +26,11 @@ export default class index extends Component {
     const { open } = this.state;
     const { sortedHabitData } = this.props
     const chartLabels = [ 'true', 'false', 'null']
-    console.log(sortedHabitData)
     const sortedByLabel = chartLabels.map( label => {
       return sortedHabitData.filter( item => {
         return item.success === label
       })
     })
-    console.log(sortedByLabel)
     const checkSuccessExists = sortedByLabel.filter(label => {
       return label.length > 0
     })
