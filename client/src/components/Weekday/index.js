@@ -21,10 +21,10 @@ export default function index(props) {
       day = "F"
       break
     case "Saturday":
-      day = "Sat"
+      day = "Sa"
       break
     case "Sunday":
-      day = "Sun"
+      day = "Su"
       break
     default:
       day = moment(props.date).format('dddd')

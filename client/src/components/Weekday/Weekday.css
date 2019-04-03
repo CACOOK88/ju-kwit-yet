@@ -10,5 +10,13 @@
   font-size: 19px;
 }
 
+.weekday .fa-check {
+  background: green;
+  border: green;
+}
 
+.weekday .fa-close {
+  background: red;
+  border: red; 
+}
 
